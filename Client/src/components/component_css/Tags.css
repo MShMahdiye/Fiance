@@ -1,0 +1,12 @@
+.colorPick-modal{
+  z-index: 2000;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2e2d2e9a;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

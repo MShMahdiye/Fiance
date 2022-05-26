@@ -1,0 +1,13 @@
+/* .home-container{
+  background: url('https://p4.wallpaperbetter.com/wallpaper/183/480/1002/dark-simple-background-texture-gradient-wallpaper-preview.jpg') ;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.grid-container{
+  display: grid;
+  font-size: 3rem;
+  grid-template-columns: 2fr 1fr;
+}

@@ -1,0 +1,10 @@
+.icon-sign-pic{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 4vw;
+  height: 6.7vw;
+  line-height: 7vw;
+  text-align: center;
+}

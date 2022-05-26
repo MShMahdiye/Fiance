@@ -1,0 +1,14 @@
+.leaflet-container {
+  width: 100vw;
+  height: 600px;
+}
+
+.absolute-marker{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2000;
+  left: calc(50%);
+  top: calc(50% - 20px);
+}
