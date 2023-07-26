@@ -1,57 +1,71 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
-function LineChart() {
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  const options = {
-    animationEnabled: true,
-    exportEnabled: true,
-    theme: "light2", // "light1", "dark1", "dark2"
-    title:{
-      text: "Bounce Rate by Week of Year"
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
     },
-    axisY: {
-      title: "Bounce Rate",
-      suffix: "%"
+    title: {
+      display: true,
+      text: '',
     },
-    axisX: {
-      title: "Week of Year",
-      prefix: "W",
-      interval: 2
-    },
-    data: [{
-      type: "line",
-      toolTipContent: "Week {x}: {y}%",
-      dataPoints: [
-        { x: 1, y: 64 },
-        { x: 2, y: 61 },
-        { x: 3, y: 64 },
-        { x: 4, y: 62 },
-        { x: 5, y: 64 },
-        { x: 6, y: 60 },
-        { x: 7, y: 58 },
-        { x: 8, y: 59 },
-        { x: 9, y: 53 },
-        { x: 10, y: 54 },
-        { x: 11, y: 61 },
-        { x: 12, y: 60 },
-        { x: 13, y: 55 },
-        { x: 14, y: 60 },
-        { x: 15, y: 56 },
-        { x: 16, y: 60 },
-        { x: 17, y: 59.5 },
-        { x: 18, y: 63 },
-        { x: 19, y: 58 },
-        { x: 20, y: 54 },
-        { x: 21, y: 59 },
-        { x: 22, y: 64 },
-        { x: 23, y: 59 }
-      ]
-    }]
-  }
+  },
+};
 
-  return (
-    <div>LineChart</div>
-  )
+export default function NewChart({ mainList, label,colorr }) {
+
+  // const [newData, setNewData] = React.useState([])
+  const [labels, setLabels] = useState([])
+  const [dataa, setDataa] = useState([])
+
+  // console.log("mainList : ",mainList );
+
+  const [newMainList, setNewMainList] = useState([
+    { label: `${label}`, backgroundColor: `${colorr?.bg}`, borderColor: `${colorr?.br}`, data: [] }
+  ])
+
+  useEffect(() => {
+     const array = Object.keys(mainList)
+     setLabels([...array]);
+     console.log('array : ',array);
+     array.map((key) => {
+      //  setNewData([...newData,mainList[key]])
+       const newlistmain = [...newMainList]
+       newlistmain.map(item => {
+         if(item.label === `${label}`){
+            item.data = [...(item.data),mainList[key]]
+         }
+       })
+       setNewMainList([...newlistmain])
+     })
+  }, [mainList])
+
+  const data = {
+    labels: labels,
+    datasets: [...newMainList],
+  };
+
+  return <Line options={options} data={data} />;
 }
-
-export default LineChart

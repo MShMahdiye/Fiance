@@ -1,7 +1,8 @@
 import { gql, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Doughnut, Line } from 'react-chartjs-2';
+import LineChart from './LineChart'
 
 const getMyExpenses = gql`
   query GetMyExpenses {
@@ -30,18 +31,65 @@ const getMyExpenses = gql`
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function ChartComponent() {
+export function ChartComponent({ year, month, day }) {
+
+  const [date, setDate] = useState([]);
+  const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
+  const [amountOfMonth, setAmountOfMonth] = useState([])
 
   const { loading, error, data, refetch } = useQuery(getMyExpenses)
 
+  useEffect(() => {
+
+    data.getMyExpenses.map((expense, i) => {
+      console.log("date", expense.date);
+      const createdDate = new Date(expense.date);
+      date.push(createdDate)
+      setDate([...new Set(date)])
+    })
+
+  }, [data])
+
+  const amountOfTags = {}
+  const tags = {}
+  const colors = {}
+  let amountOfTagsList = []
+  let tagsList = []
+  let colorsList = []
+
+  const create = () => {
+    data.getMyExpenses.forEach(expense => {
+
+      console.log("uuuu : ",expense);
+      const tag = expense.tags[0].name;
+      const amount = expense.amount;
+      const color = expense.tags[0].color
+      if (amountOfTags[tag]) {
+        amountOfTags[tag] += amount;
+
+      }
+      else {
+        amountOfTags[tag] = amount;
+        tags[tag] = tag
+        colors[tag] = color
+      }
+    })
+
+    amountOfTagsList = [...Object.keys(amountOfTags).map(item =>  amountOfTags[item])]
+    tagsList = [...Object.keys(tags).map(item =>  tags[item])]
+    colorsList = [...Object.keys(colors).map(item =>  colors[item])]
+  }
+
+  create()
+
   const externalData = {
-    labels:  data.getMyExpenses.map((expense) =>{if (expense.tags.length > 0){return expense.tags[0].name}}),
+    labels: [...tagsList],
     datasets: [
       {
-        label: '# of Votes',
-        data: data.getMyExpenses.map((expense) => {return expense.amount}),
-        backgroundColor: data.getMyExpenses.map((expense) =>{if (expense.tags.length > 0){return expense.tags[0].color}}),
-        borderColor: data.getMyExpenses.map((expense) =>{if (expense.tags.length > 0){return expense.tags[0].color}}),
+        label: '',
+        data: [...amountOfTagsList],
+        backgroundColor: [...colorsList],
+        borderColor: [...colorsList],
         borderWidth: 1,
       },
     ],
@@ -52,5 +100,10 @@ export function ChartComponent() {
   if (loading) {
     return <h1>Loading</h1>
   }
-  return <div className='w-[50vw] h-[70vw]'><Pie data={externalData} /></div>;
+  return (
+    <div style={{ display: 'flex' }}>
+      <div className='w-[20vw] h-[20vw]'><Pie data={externalData} /></div>
+      <div className='w-[20vw] h-[20vw]'><Doughnut data={externalData} /></div>
+    </div>
+  );
 }

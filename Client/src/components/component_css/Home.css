@@ -6,8 +6,25 @@
   background-repeat: no-repeat;
 } */
 
+
 .grid-container{
   display: grid;
-  font-size: 3rem;
-  grid-template-columns: 2fr 1fr;
+  /* font-size: .1vw; */
+  grid-template-columns: 5fr 1fr;
+}
+.img-home{
+  display: block;
+  width: 60vw;
+  height: 40vw;
+}
+
+.img-home img{
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .img-home{
+    display: none;
+  }
 }

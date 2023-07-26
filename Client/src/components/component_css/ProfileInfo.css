@@ -22,3 +22,83 @@
   justify-content: center;
   align-items: center;
 }
+
+.profile-image-container img{
+  width: 3vw;
+  height: 3vw;
+}
+
+.profile-image-container{
+  background-color: #e54f6d4e;
+  padding: 1vw;
+  border-radius: 50%;
+}
+
+.prg-img img{
+  width: 7vw;
+  height: 7vw;
+}
+
+.chart-img img{
+  width: 30vw;
+  height: 12vw;
+  border: 1px solid #f9f9f9;
+  border-radius: .3rem;
+  margin-bottom: 1vw;
+}
+
+.chart-img{
+  width: fit-content;
+  border-radius: .5rem;
+  padding: 2vw;
+  box-shadow: 1px 5px 10px #d5d5d5;
+  margin: 2vw;
+  cursor: pointer;
+}
+
+.chart-img:hover{
+  box-shadow: 1px 5px 30px #bc1aac48;
+}
+
+.prg-txt{
+  
+}
+
+.prg-img{
+  width: fit-content;
+  border-radius: .5rem;
+  padding: 2vw;
+  box-shadow: 1px 5px 10px #d5d5d5;
+  margin: 2vw;
+}
+
+.card-img{
+  width: fit-content;
+  border-radius: .5rem;
+  box-shadow: 1px 5px 10px #d5d5d5;
+  margin: 2vw;
+}
+
+.earn-img{
+  width: fit-content;
+  border-radius: .5rem;
+  box-shadow: 1px 5px 10px #d5d5d5;
+  margin: 2vw;
+}
+
+.earn-img img{
+  width: 34vw;
+  height: 17vw;
+}
+
+.card-img img{
+  width: 17vw;
+  height: 17vw;
+}
+
+.pro-info-container{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  height: 89vh;
+  background-color: #f9f9f9;
+}

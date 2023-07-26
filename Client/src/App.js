@@ -6,14 +6,16 @@ import Home from './pages/Home';
 import Dashboard from './components/Dashboard';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Tags from './components/Tags';
-import Profile from './components/Profile';
-import Createtags from './components/CreateTags';
-import AllExpenses from './components/AllExpenses';
+import Tags from './pages/Tags';
+import Profile from './pages/Profile';
+import Createtags from './pages/CreateTags';
+import AllExpenses from './pages/AllExpenses';
 import { ChartComponent } from './components/Chart';
-import ProfileInfo from './components/ProfileInfo';
-import NotFound from './components/NotFound';
+import ProfileInfo from './pages/ProfileInfo';
+import NotFound from './pages/NotFound';
 import ColorPicker from './components/ColorPicker';
+import Summary from './pages/Summary';
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
           <Route path={'tags'} element={<Tags />} />
           <Route path={'chart'} element={<ChartComponent />} />
           <Route path={'colorpicker'} element={<ColorPicker />} />
+          <Route path={'summary'} element={<Summary />} />
         </Route>
       </Routes>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField } from '@mui/material'
+import { Alert, TextField } from '@mui/material'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
@@ -40,11 +40,12 @@ function Login() {
 
       cookies.set('token', token);
       if (token) {
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboard/allexpenses";
       }
-
     } catch (error) {
       console.log(error);
+      alert(error)
+      setUserInfo({username:'',pass:''})
     }
   }
 
@@ -53,12 +54,12 @@ function Login() {
       intial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-      <div className='text-[1.5rem] text-[#6C63FF] flex justify-between'><div><Link to={'/signup'}>ثبت نام</Link></div><div></div></div>
+      <div className='text-[1vw] text-[#6C63FF] flex justify-between'><div><Link to={'/signup'}>ثبت نام</Link></div><div></div></div>
       <div className='flex sm:justify-center xl:justify-between items-center'>
         <div className='sm:hidden xl:block'>
           <svg xmlns="http://www.w3.org/2000/svg" id="b8ea24f2-0d0e-4134-9f6b-a081050070ad"
-            data-name="Layer 1" width="783.92771"
-            height="868.73369" viewBox="0 0 783.92771 868.73369"
+            data-name="Layer 1" width="500.92771"
+            height="600.73369" viewBox="0 0 783.92771 868.73369"
             className="injected-svg ClassicGrid__ImageFile-sc-td9pmq-4 fNAcXv 
           grid_media" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>enter</title>
@@ -107,8 +108,8 @@ function Login() {
         </div>
         <div className='py-[3vw]'>
           <div className='w-[40vw] flex flex-col justify-center items-center'>
-            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='username' variant='outlined' onChange={handleChange} label='نام کاربری' /></div>
-            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='pass' variant='outlined' onChange={handleChange} label='رمز عبور' /></div>
+            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='username' value={userInfo?.username} variant='standard' onChange={handleChange} label='نام کاربری' /></div>
+            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='pass' value={userInfo?.pass}  variant='standard' onChange={handleChange} label='رمز عبور' /></div>
             <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
               <div className='w-[8vw]'>
                 <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>

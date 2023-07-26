@@ -39,24 +39,26 @@ function SignUp() {
       )
       cookies.set('token',token);
       if(token){
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboard/allexpenses";
       } 
 
     }catch(error){
       console.log(error);
+      alert(error)
+      setUserInfo({username:'',pass:'',name:''})
     }
   }
   
   return (
-    <div className='px-[3vw] py-[1vw]'>
-      <div className='text-[1.5rem] text-[#6C63FF] flex justify-between'><div><Link to={'/login'}>ورود</Link></div><div></div></div>
-      <div className='h-screen flex justify-center items-center'>
+    <div className='px-[3vw] py-[1vw] h-screen'>
+      <div className='text-[1vw] text-[#6C63FF] flex justify-between'><div><Link to={'/login'}>ورود</Link></div><div></div></div>
+      <div className='flex h-[90%] justify-center items-center'>
         <div className='flex justify-center items-center'>
           <div className='flex justify-center items-center sm:hidden xl:block'>
             <svg xmlns="http://www.w3.org/2000/svg"
               id="a767eac7-073f-42f5-be07-7b01228cc98c"
-              data-name="Layer 1" width="889.07556"
-              height="459.37952" viewBox="0 0 889.07556 459.37952" className="injected-svg 
+              data-name="Layer 1" width="500.07556"
+              height="300.37952" viewBox="0 0 889.07556 459.37952" className="injected-svg 
           ClassicGrid__ImageFile-sc-td9pmq-4 fNAcXv grid_media"
               xmlnsXlink="http://www.w3.org/1999/xlink">
               <title>welcome_cats</title><ellipse cx="444.53778"
@@ -128,9 +130,9 @@ function SignUp() {
           <div>
             <div className='py-[3vw]'>
               <div className='w-[40vw] flex flex-col justify-center items-center'>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="name" variant='outlined' onChange={handleChange} label='نام' /></div>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="username" variant='outlined' onChange={handleChange} label='نام کاربری' /></div>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="pass" variant='outlined' onChange={handleChange} label='رمز عبور' /></div>
+                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="name" variant='standard' onChange={handleChange} label='نام' /></div>
+                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="username" variant='standard' onChange={handleChange} label='نام کاربری' /></div>
+                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="pass" variant='standard' onChange={handleChange} label='رمز عبور' /></div>
                 <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
                   <div className='w-[8vw]'>
                     <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>

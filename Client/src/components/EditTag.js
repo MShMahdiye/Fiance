@@ -78,8 +78,8 @@ function EditTag({id}) {
     <div>
       <div className='py-[3vw]'>
         <div className='w-[40vw] flex flex-col justify-center items-center'>
-          <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='outlined' onChange={handleChange} label='نام تگ' /></div>
-          <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='outlined' onChange={handleChange} label='رنگ' /></div>
+          <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' /></div>
+          <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='standard' onChange={handleChange} label='رنگ' /></div>
           <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
             <div className='w-[8vw]'>
               <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
