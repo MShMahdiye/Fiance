@@ -1,6 +1,6 @@
 import React from 'react'
 import Cookies from 'universal-cookie'
-import Logo from '../Images/Dollar.png'
+import Logo from '../content/Images/Logo.png'
 import './component_css/Header.css'
 
 function Header() {

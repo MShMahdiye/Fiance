@@ -136,68 +136,116 @@ function Hazine() {
   }
 
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <div className='py-[4vw]'>
-        <div className='w-[40vw] flex flex-col justify-center items-center'>
-          <div className='flex mb-[2vw] w-[25vw]'>
-            <div><TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' /></div>
-            <div className='btn-group flex items-center w-[3vw] mx-[2vw]'><Button fullWidth size='large' variant='contained' onClick={() => { setShowMap(!showMap) }}>موقعیت</Button></div>
-            <div className='btn-group flex items-center w-[3vw] mx-[2vw]'><Button fullWidth size='large' variant='contained' onClick={() => { setShowDate(!showDate) }}>تاریخ</Button></div>
-          </div>
-          <div className='flex flex-wrap justify-center mb-[2vw]'>
-            {
-              somenewtags.map((tag, i) => (
-                tag.name !== ""
-                  ?
-                  <div style={{
-                    padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
-                    cursor: 'pointer', margin: '1vw'
+    // <div className='flex flex-col justify-center items-center'>
+    //   <div className='py-[4vw]'>
+    //     <div className='w-[40vw] flex flex-col justify-center items-center'>
+    //       <div className='flex mb-[2vw] w-[25vw]'>
+    //         <div><TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' /></div>
+    //         <div className='btn-group flex items-center w-[3vw] mx-[2vw]'><Button fullWidth size='large' variant='contained' onClick={() => { setShowMap(!showMap) }}>موقعیت</Button></div>
+    //         <div className='btn-group flex items-center w-[3vw] mx-[2vw]'><Button fullWidth size='large' variant='contained' onClick={() => { setShowDate(!showDate) }}>تاریخ</Button></div>
+    //       </div>
+    //       <div className='flex flex-wrap justify-center mb-[2vw]'>
+    //         {
+    //           somenewtags.map((tag, i) => (
+    //             tag.name !== ""
+    //               ?
+    //               <div style={{
+    //                 padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
+    //                 cursor: 'pointer', margin: '1vw'
+    //               }}
+    //                 onClick={() => {
+    //                   const arr = [...somenewtags]
+    //                   arr[i].isSelected = true
+    //                   setsomenewtags(arr)
+    //                 }}
+    //               >
+    //                 {tag.name}
+    //               </div>
+    //               :
+    //               null
+    //           ))
+    //         }
+    //         <div className='flex justify-center items-center m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
+    //           <Link to={'/dashboard/createtag'}>
+    //             <span>
+    //               <svg xmlnsXlink="http://www.w3.org/1999/xlink"
+    //                 xmlns="http://www.w3.org/2000/svg" width="14"
+    //                 height="14" viewBox="0 0 14 14"
+    //                 class="site-nav-dropdown-icon small-icon">
+    //                 <path d="M7 0.75L7 13.25M13.25 7L0.75 7"
+    //                   stroke="#E54F6D" stroke-width="1.5px" stroke-linecap="round"></path>
+    //               </svg>
+    //             </span>
+    //           </Link>
+    //         </div>
+    //       </div>
+    //       <div className='relative flex flex-col justify-center items-center my-[2vw] mb-[1vw]'>
+    //         {
+
+    //           <div className={showDate ? 'mb-[1vw] z-[2000000000000000] border-solid border-2 border-indigo-600 rounded-[0.5vw]' : 'mb-[1vw] z-[10000] '}>
+    //             <PersianDatePicker setSelectedDate={setSelectedDate} />
+    //           </div>
+
+    //         }
+    //         {
+
+    //           <div className={showMap ? 'mb-[1vw] border-solid border-2 border-indigo-600 z-[20000]' : 'mb-[1vw] z-[1]'}><MapComponent setPropsPosition={setLocation} /></div>
+    //         }
+    //       </div>
+    //       <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
+    //         <div className='w-[8vw]'>
+    //           <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className='grid grid-cols-4 grid-row-4 gap-10 h-[80vh]'>
+      <div className='col-span-4'>
+        <div className='flex flex-wrap justify-center mb-[2vw]'>
+          {
+            somenewtags.map((tag, i) => (
+              tag.name !== ""
+                ?
+                <div style={{
+                  padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
+                  cursor: 'pointer', margin: '1vw'
+                }}
+                  onClick={() => {
+                    const arr = [...somenewtags]
+                    arr[i].isSelected = true
+                    setsomenewtags(arr)
                   }}
-                    onClick={() => {
-                      const arr = [...somenewtags]
-                      arr[i].isSelected = true
-                      setsomenewtags(arr)
-                    }}
-                  >
-                    {tag.name}
-                  </div>
-                  :
-                  null
-              ))
-            }
-            <div className='flex justify-center items-center m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
-              <Link to={'/dashboard/createtag'}>
-                <span>
-                  <svg xmlnsXlink="http://www.w3.org/1999/xlink"
-                    xmlns="http://www.w3.org/2000/svg" width="14"
-                    height="14" viewBox="0 0 14 14"
-                    class="site-nav-dropdown-icon small-icon">
-                    <path d="M7 0.75L7 13.25M13.25 7L0.75 7"
-                      stroke="#E54F6D" stroke-width="1.5px" stroke-linecap="round"></path>
-                  </svg>
-                </span>
-              </Link>
-            </div>
-          </div>
-          <div className='relative flex flex-col justify-center items-center my-[2vw] mb-[1vw]'>
-            {
-
-              <div className={showDate ? 'mb-[1vw] z-[2000000000000000] border-solid border-2 border-indigo-600 rounded-[0.5vw]' : 'mb-[1vw] z-[10000] '}>
-                <PersianDatePicker setSelectedDate={setSelectedDate} />
-              </div>
-
-            }
-            {
-
-              <div className={showMap ? 'mb-[1vw] border-solid border-2 border-indigo-600 z-[20000]' : 'mb-[1vw] z-[1]'}><MapComponent setPropsPosition={setLocation} /></div>
-            }
-          </div>
-          <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
-            <div className='w-[8vw]'>
-              <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
-            </div>
+                >
+                  {tag.name}
+                </div>
+                :
+                null
+            ))
+          }
+          <div className='flex justify-center items-center m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
+            <Link to={'/dashboard/createtag'}>
+              <span>
+                <svg xmlnsXlink="http://www.w3.org/1999/xlink"
+                  xmlns="http://www.w3.org/2000/svg" width="14"
+                  height="14" viewBox="0 0 14 14"
+                  class="site-nav-dropdown-icon small-icon">
+                  <path d="M7 0.75L7 13.25M13.25 7L0.75 7"
+                    stroke="#E54F6D" stroke-width="1.5px" stroke-linecap="round"></path>
+                </svg>
+              </span>
+            </Link>
           </div>
         </div>
+      </div>
+      <div className='col-span-3 row-span-3'>
+        <div className='w-[100%] h-full'><MapComponent setPropsPosition={setLocation} /></div>
+      </div>
+      <div className='bg-[#e54f6d] p-10 rounded-md'>
+        <TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' />
+      </div>
+      <div className='row-span-2'>
+        <PersianDatePicker setSelectedDate={setSelectedDate} />
       </div>
     </div>
   )

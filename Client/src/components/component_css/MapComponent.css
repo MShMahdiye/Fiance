@@ -1,6 +1,8 @@
 .leaflet-container {
-  width: 100vw;
-  height: 30vh;
+  width: 100%;
+  min-height: 70vh;
+  height: 100%;
+  border-radius: .3rem;
 }
 
 .absolute-marker{
@@ -9,6 +11,6 @@
   align-items: center;
   position: absolute;
   z-index: 2000;
-  left: calc(50%);
-  top: calc(50% - 20px);
+  left: calc(62%);
+  top: calc(62% - 20px);
 }

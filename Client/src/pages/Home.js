@@ -5,7 +5,7 @@ import '../components/component_css/Home.css'
 
 function Home() {
 
-  const elements = require('../Images/Elements.png')
+  const elements = require('../content/Images/Elements.png')
   return (
     <div className='home-container'>
       <Header />

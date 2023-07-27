@@ -2,8 +2,8 @@
   font-family: 'IRANSans';
   font-style: normal;
   font-weight: 700;
-  src: url('font/IRANSansRegular.ttf') format('truetype');
-  src: url('font/IRANSans.woff') format('woff');
+  src: url('./content/font/IRANSansRegular.ttf') format('truetype');
+  src: url('./content/font/IRANSans.woff') format('woff');
      }
 
 .App {
@@ -17,4 +17,17 @@
   .App{
     font-size: 1vw;
   }
+}
+
+.MuiTextField-root{
+  border-radius: .3rem;
+  border: none !important;
+}
+
+.MuiOutlinedInput-root{
+  border: none;
+}
+
+.MuiInput-input {
+  border: none;
 }

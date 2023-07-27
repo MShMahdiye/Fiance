@@ -17,7 +17,6 @@ const PersianDatePicker = ({setSelectedDate}) => {
       value={selectedDay}
       onChange={setSelectedDay}
       shouldHighlightWeekends
-      inputPlaceholder="انتخاب"
       locale="fa" 
     />
   );
