@@ -200,8 +200,8 @@ function Hazine() {
     //     </div>
     //   </div>
     // </div>
-    <div className='grid grid-cols-4 grid-row-4 gap-5 h-[80vh]'>
-      <div className='col-span-4'>
+    <div className='grid grid-cols-1 grid-row-4 lg:grid-cols-4 lg:grid-row-4 md:grid-cols-4 md:grid-row-4 gap-5 h-[80vh]'>
+      <div className='col-span-1 lg:col-span-4 md:col-span-4'>
         <div className='flex flex-wrap justify-center mb-[2vw]'>
           {
             somenewtags.map((tag, i) => (
@@ -238,7 +238,7 @@ function Hazine() {
           </div>
         </div>
       </div>
-      <div className='col-span-3 row-span-3'>
+      <div className='col-span-1 row-span-1 lg:col-span-3 lg:row-span-3 md:col-span-3 md:row-span-3'>
         <div className='w-[100%] h-full p-5 rounded-md bg-[#2D62ED]'><MapComponent setPropsPosition={setLocation} /></div>
       </div>
       <div className='bg-[#2D62ED] p-5 rounded-md'>
@@ -246,7 +246,7 @@ function Hazine() {
           <TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' />
         </div>
       </div>
-      <div className='row-span-2 bg-[#2D62ED] p-5 rounded-md'>
+      <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#2D62ED] p-5 rounded-md'>
         <PersianDatePicker setSelectedDate={setSelectedDate} />
       </div>
     </div>

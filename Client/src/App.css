@@ -22,6 +22,15 @@
 .MuiTextField-root{
   border-radius: .3rem;
   border: none !important;
+  background: #fff;
+  width: 200px !important;
+
+}
+
+.MuiFormLabel-root{
+  padding-left: .5vw !important;
+  font-family: IRANSans, Tahoma, Geneva, sans-serif !important;
+  font-size: .8vw !important;
 }
 
 .MuiOutlinedInput-root{

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { Button, TextField } from '@mui/material'
+import Logo from '../content/Images/Logo.png'
+import '../components/component_css/Tags.css'
 
 const CreateTags = gql`
   mutation Create_tag($data: tagInfo!) {
@@ -84,24 +86,48 @@ const Createtags = () => {
 
 
   return (
-    <div className='flex justify-center item-center h-[89vh] bg-[#fff]'>
-      <div className='flex justify-center items-center'>
-        <div className='flex justify-center item-center rounded bg-[#c5e1e488] p-[3vw]'>
-          <div className='flex justify-center item-center rounded bg-[#fff]'>
-            <div className='flex justify-center items-center py-[3vw]'>
-              <div className='w-[40vw] flex flex-col justify-center items-center'>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' /></div>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='standard' onChange={handleChange} label='رنگ' /></div>
-                <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
-                  <div className='w-[8vw] my-[5vw]'>
-                    <Button fullWidth size='large' variant='contained' onClick={handleCreate}>ثبت</Button>
-                  </div>
+    // <div className='create-tag-container flex justify-center item-center h-[89vh] bg-[#fff]'>
+    //   <div className='flex justify-center items-center bg-[#c5e1e488] w-full h-full'>
+    //     <div className='flex justify-center item-center rounded bg-[#fff] '>
+    //       <div className='flex justify-center item-center rounded '>
+    //         <div className='flex justify-center items-center py-[3vw]'>
+    //           <div className='w-[40vw] flex flex-col justify-center items-center'>
+    //             <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' /></div>
+    //             <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='standard' onChange={handleChange} label='رنگ' /></div>
+    //             <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
+    //               <div className='w-[8vw] my-[5vw]'>
+    //                 <Button fullWidth size='large' variant='contained' onClick={handleCreate}>ثبت</Button>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className='create-tag-container flex justify-center item-center h-[89vh] bg-[#fff]'>
+      <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
+        <div className='flex justify-between w-[50vw] items-center'>
+          <div className='flex justify-center items-center'>
+            <div className='w-[40vw] flex flex-col justify-center items-center'>
+              <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' /></div>
+              <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='standard' onChange={handleChange} label='رنگ' /></div>
+              <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
+                <div className='w-[8vw] my-[5vw]'>
+                  <Button fullWidth size='large' variant='contained' onClick={handleCreate}>ثبت</Button>
                 </div>
               </div>
             </div>
           </div>
+          <div className='flex justify-center items-center'>{/* <Logo /> */}
+            <div ><img width={'500vw'} src={Logo} /></div>
+            <div className='text-[3vw] text-[#fff]'>
+              <span>Financeee</span>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   )
 }
