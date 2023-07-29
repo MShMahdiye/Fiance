@@ -126,6 +126,8 @@ function ProfileInfo() {
     })
   }
 
+  console.log("image in profile info ::",);
+
 
   createYearly();
   createMonthly();

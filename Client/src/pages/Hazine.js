@@ -249,6 +249,7 @@ function Hazine() {
       <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#2D62ED] p-5 rounded-md'>
         <PersianDatePicker setSelectedDate={setSelectedDate} />
       </div>
+      <div className='fixed top-21 left-5'><div><Button fullWidth size='large' variant='contained' onClick={handleSubmit}>افزودن</Button></div></div>
     </div>
   )
 }
