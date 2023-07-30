@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { ChartComponent } from '../components/Chart'
 import '../components/component_css/allexpences.css'
 import '../components/component_css/ProfileInfo.css'
+import { motion as m } from 'framer-motion'
 
 const getMyExpenses = gql`
   query GetMyExpenses {
@@ -152,11 +153,14 @@ function AllExpenses() {
   createMonthly();
   createDaily();
 
-  
+
 
   return (
 
-    <>
+    <m.div initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}>
       <div className='expenses-container'>
         <Link to={'/dashboard/summary'}>
           <div className='EditUser'>
@@ -202,7 +206,7 @@ function AllExpenses() {
           </table>
         </div>
       </div>
-    </>
+    </m.div>
 
   )
 }

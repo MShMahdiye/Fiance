@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../components/component_css/ProfileInfo.css'
+import { motion as m } from 'framer-motion'
 
 const my_info = gql`
   query Me {
@@ -138,7 +139,12 @@ function ProfileInfo() {
 
 
   return (
-    <div className='pro-info-container'>
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}
+      className='pro-info-container'>
       <div className='flex flex-col justify-center items-end p-2 bg-white m-2 rounded'>
         <div className='flex justify-between items-start'>
           <div className='prg-img'>
@@ -181,7 +187,7 @@ function ProfileInfo() {
           </Link>
         </div>
       </div>
-    </div>
+    </m.div>
   )
 }
 

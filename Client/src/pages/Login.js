@@ -4,6 +4,7 @@ import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
 import { gql, useMutation } from "@apollo/client"
+import { motion as m } from 'framer-motion';
 
 const LoginMutation = gql`
 mutation Login($username: String!, $password: String!) {
@@ -45,15 +46,16 @@ function Login() {
     } catch (error) {
       console.log(error);
       alert(error)
-      setUserInfo({username:'',pass:''})
+      setUserInfo({ username: '', pass: '' })
     }
   }
 
   return (
-    <div className='px-[3vw] py-[1vw]'
-      intial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}>
+    <m.div className='px-[3vw] py-[1vw]'
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}>
       <div className='text-[1vw] text-[#6C63FF] flex justify-between'><div><Link to={'/signup'}>ثبت نام</Link></div><div></div></div>
       <div className='flex sm:justify-center xl:justify-between items-center'>
         <div className='sm:hidden xl:block'>
@@ -109,7 +111,7 @@ function Login() {
         <div className='py-[3vw]'>
           <div className='w-[40vw] flex flex-col justify-center items-center'>
             <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='username' value={userInfo?.username} variant='standard' onChange={handleChange} label='نام کاربری' /></div>
-            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='pass' value={userInfo?.pass}  variant='standard' onChange={handleChange} label='رمز عبور' /></div>
+            <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='pass' value={userInfo?.pass} variant='standard' onChange={handleChange} label='رمز عبور' /></div>
             <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
               <div className='w-[8vw]'>
                 <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
@@ -118,7 +120,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
+    </m.div>
   )
 }
 

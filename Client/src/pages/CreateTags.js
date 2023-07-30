@@ -3,6 +3,7 @@ import { gql, useMutation, useQuery } from '@apollo/client'
 import { Button, TextField } from '@mui/material'
 import Logo from '../content/Images/Logo.png'
 import '../components/component_css/Tags.css'
+import { motion as m } from 'framer-motion'
 
 const CreateTags = gql`
   mutation Create_tag($data: tagInfo!) {
@@ -105,7 +106,12 @@ const Createtags = () => {
     //     </div>
     //   </div>
     // </div>
-    <div className='create-tag-container flex justify-center item-center h-[89vh] bg-[#fff]'>
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}
+      className='create-tag-container flex justify-center item-center h-[89vh] bg-[#fff]'>
       <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
         <div className='flex justify-between w-[50vw] items-center'>
           <div className='flex justify-center items-center'>
@@ -128,7 +134,7 @@ const Createtags = () => {
         </div>
       </div>
 
-    </div>
+    </m.div>
   )
 }
 

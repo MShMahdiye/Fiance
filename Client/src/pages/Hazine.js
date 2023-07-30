@@ -5,6 +5,7 @@ import MapComponent from '../components/MapComponent'
 import PersianDatePicker from '../components/PersianDatePicker'
 import { Link, useNavigate } from 'react-router-dom'
 import '../components/component_css/hazine.css'
+import { motion as m } from 'framer-motion'
 
 const expenseMutation = gql`
 mutation Mutation($data: ExpenseInfo!) {
@@ -200,7 +201,12 @@ function Hazine() {
     //     </div>
     //   </div>
     // </div>
-    <div className='grid grid-cols-1 grid-row-4 lg:grid-cols-4 lg:grid-row-4 md:grid-cols-4 md:grid-row-4 gap-5 h-[80vh]'>
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}
+      className='grid grid-cols-1 grid-row-4 lg:grid-cols-4 lg:grid-row-4 md:grid-cols-4 md:grid-row-4 gap-5 h-[80vh]'>
       <div className='col-span-1 lg:col-span-4 md:col-span-4'>
         <div className='flex flex-wrap justify-center mb-[2vw]'>
           {
@@ -250,7 +256,7 @@ function Hazine() {
         <PersianDatePicker setSelectedDate={setSelectedDate} />
       </div>
       <div className='fixed top-21 left-5'><div><Button fullWidth size='large' variant='contained' onClick={handleSubmit}>افزودن</Button></div></div>
-    </div>
+    </m.div>
   )
 }
 

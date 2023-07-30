@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import '../components/component_css/Tags.css'
 import { SketchPicker, BlockPicker } from "react-color";
 import { Link, useNavigate } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
 
 const EditTagMutation = gql`
   mutation Mutation($_id: ID!, $data: tagInfo!) {
@@ -48,7 +49,7 @@ function Tags() {
 
   const navigate = useNavigate()
 
-  console.log("data : ",data);
+  console.log("data : ", data);
 
   useEffect(() => {
 
@@ -132,7 +133,11 @@ function Tags() {
   if (loading) return <h1> Loading </h1>
 
   return (
-    <div>
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}>
       {
         tagsList.map((tag, i) => {
 
@@ -202,7 +207,7 @@ function Tags() {
           </span>
         </Link>
       </div>
-    </div>
+    </m.div>
   )
 }
 

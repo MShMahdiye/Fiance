@@ -2,10 +2,11 @@ import { Button, TextField } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
-import {gql,useMutation} from "@apollo/client"
+import { gql, useMutation } from "@apollo/client"
 import { useState } from 'react'
+import { motion as m } from 'framer-motion';
 
-const SignUpMutation =gql`
+const SignUpMutation = gql`
   mutation Mutation($name: String!, $username: String!, $password: String!) {
     signup(name: $name, username: $username, password: $password) {
       token
@@ -17,7 +18,7 @@ const cookies = new Cookies();
 
 function SignUp() {
 
-  const [userInfo,setUserInfo] = useState({name:'',})
+  const [userInfo, setUserInfo] = useState({ name: '', })
   const [submit] = useMutation(SignUpMutation)
 
   const handleChange = (e) => {
@@ -26,9 +27,9 @@ function SignUp() {
 
   const handleSubmit = async () => {
 
-    try{
+    try {
 
-      const {data:{signup:{token}}} = await submit(
+      const { data: { signup: { token } } } = await submit(
         {
           variables: {
             name: userInfo.name,
@@ -37,20 +38,25 @@ function SignUp() {
           }
         }
       )
-      cookies.set('token',token);
-      if(token){
+      cookies.set('token', token);
+      if (token) {
         window.location.href = "/dashboard/allexpenses";
-      } 
+      }
 
-    }catch(error){
+    } catch (error) {
       console.log(error);
       alert(error)
-      setUserInfo({username:'',pass:'',name:''})
+      setUserInfo({ username: '', pass: '', name: '' })
     }
   }
-  
+
   return (
-    <div className='px-[3vw] py-[1vw] h-screen'>
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 1 }}
+      className='px-[3vw] py-[1vw] h-screen'>
       <div className='text-[1vw] text-[#6C63FF] flex justify-between'><div><Link to={'/login'}>ورود</Link></div><div></div></div>
       <div className='flex h-[90%] justify-center items-center'>
         <div className='flex justify-center items-center'>
@@ -70,7 +76,7 @@ function SignUp() {
           </div>
         </div>
       </div>
-    </div>
+    </m.div>
   )
 }
 
