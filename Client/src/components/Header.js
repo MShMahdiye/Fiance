@@ -1,6 +1,6 @@
 import React from 'react'
 import Cookies from 'universal-cookie'
-import Logo from '../content/Images/Logo.png'
+import Logo from '../content/Images/dark-logo.png'
 import './component_css/Header.css'
 
 function Header() {
@@ -23,7 +23,7 @@ function Header() {
       </div>
       <div className='logo-header'>
         <div className='cursor-pointer' onClick={() => { window.location.href = '/'; }}>
-          <img src={Logo} />
+          <img width={"120vw"} height={"1vw"} src={Logo} />
         </div>
       </div>
     </div>

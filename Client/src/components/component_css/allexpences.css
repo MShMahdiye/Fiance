@@ -23,7 +23,7 @@ tr:nth-child(odd){
     justify-content: center;
     align-items: center;
   }
-  img{
+  .expenses-container img{
     width: 1vw;
     height: 1vw;
   }
@@ -39,7 +39,7 @@ tr:nth-child(odd){
   table{
     width: 70vw;
   }
-  img{
+  .expenses-container img{
     width: 3vw;
     height: 3vw;
   }

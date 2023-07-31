@@ -26,7 +26,7 @@ function App() {
         <Route path={'/signup'} element={<SignUp />} />
         <Route path={'*'} element={<NotFound />} />
 
-        <Route path={'/dashboard/'} element={<Dashboard />}>
+        <Route exact path={'/dashboard/'} element={<Dashboard />}>
           <Route path={'edit'} element={<Profile />} />
           <Route path={'profileinfo'} element={<ProfileInfo />} />
           <Route path={'hazine'} element={<Hazine />} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { Button, TextField } from '@mui/material'
-import Logo from '../content/Images/Logo.png'
+import Logo from '../content/Images/light-logo.png'
 import '../components/component_css/Tags.css'
 import { motion as m } from 'framer-motion'
 
@@ -113,23 +113,20 @@ const Createtags = () => {
       exit={{ opacity: 1 }}
       className='create-tag-container flex justify-center item-center h-[89vh] bg-[#fff]'>
       <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
-        <div className='flex justify-between w-[50vw] items-center'>
+        <div className='flex justify-between w-[60vw] items-center'>
           <div className='flex justify-center items-center'>
-            <div className='w-[40vw] flex flex-col justify-center items-center'>
+            <div className='flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
               <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' /></div>
               <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name='color' variant='standard' onChange={handleChange} label='رنگ' /></div>
-              <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
-                <div className='w-[8vw] my-[5vw]'>
+              <div className='flex justify-center items-center w-[25vw]'>
+                <div className='w-[8vw] my-[2vw]'>
                   <Button fullWidth size='large' variant='contained' onClick={handleCreate}>ثبت</Button>
                 </div>
               </div>
             </div>
           </div>
-          <div className='flex justify-center items-center'>{/* <Logo /> */}
-            <div ><img width={'500vw'} src={Logo} /></div>
-            <div className='text-[3vw] text-[#fff]'>
-              <span>Financeee</span>
-            </div>
+          <div className='flex justify-center items-center m-4'>
+            <div ><img width={'1000vw'} src={Logo} /></div>
           </div>
         </div>
       </div>
