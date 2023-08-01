@@ -5,6 +5,7 @@ import '../components/component_css/ProfileInfo.css'
 import LineChart from '../components/LineChart'
 import Path from '../content/Images/path.png'
 import { motion as m } from 'framer-motion'
+import CreditCard from '../components/CreditCard'
 
 const my_info = gql`
   query Me {
@@ -146,27 +147,9 @@ function ProfileInfo() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className='grid grid-cols-4 grid-rows-3'>
-      <div>
-        <div className='flex justify-center items-center w-[15vw] h-[10vw] rounded bg-[#39D5CF] mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
-        </div>
-      </div>
-      <div>
-        <div className='flex justify-center items-center w-[15vw] h-[10vw] rounded bg-[#39D5CF] mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
-        </div>
-      </div>
-      <div>
-        <div className='flex justify-center items-center w-[15vw] h-[10vw] rounded bg-[#39D5CF] mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
-        </div>
-      </div>
-      <div className='bg-red-300 col-span-3 row-span-1'>
-        hiii
-      </div>
-      <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
-        <div className='flex flex-col justify-start items-center pt-[3vw]'>
+      className='grid grid-cols-5 grid-rows-3 h-[89vh] gap-4'>
+        <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
+        <div className='flex flex-col justify-start h-full items-center pt-[3vw]'>
           <div className='profile-image-container mb-[2vw]'>
             <img src={userImg} />
           </div>
@@ -189,6 +172,30 @@ function ProfileInfo() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className='rounded bg-[#39D5CF]'>
+        <div className='flex justify-center items-center mx-[1vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path} />
+        </div>
+      </div>
+      <div className='rounded bg-[#39D5CF]'>
+        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path} />
+        </div>
+      </div>
+      <div className='rounded bg-[#39D5CF]'>
+        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path} />
+        </div>
+      </div>
+      <div className='rounded bg-[#39D5CF]'>
+        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path} />
+        </div>
+      </div>
+      <div className='bg-red-300 rounded col-span-4 row-span-2'>
+        hiii
+        <CreditCard />
       </div>
     </m.div>
   )
