@@ -1,6 +1,7 @@
 .gradient-card{
- width: 10vw;
- height: 6vh;
+ width: 22vw;
+ height: 25vh;
+border-radius: 1.5rem;
 background: hsla(239, 100%, 67%, 1);
 
 background: linear-gradient(90deg, hsla(239, 100%, 67%, 1) 0%, hsla(187, 100%, 89%, 1) 100%);

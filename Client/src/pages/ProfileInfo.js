@@ -147,8 +147,8 @@ function ProfileInfo() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className='grid grid-cols-5 grid-rows-3 h-[89vh] gap-4'>
-        <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
+      className='grid grid-cols-5 grid-rows-3 h-[89vh] gap-10 p-5'>
+      <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
         <div className='flex flex-col justify-start h-full items-center pt-[3vw]'>
           <div className='profile-image-container mb-[2vw]'>
             <img src={userImg} />
@@ -193,9 +193,35 @@ function ProfileInfo() {
           <img width={"200vw"} height={"50vh"} src={Path} />
         </div>
       </div>
-      <div className='bg-red-300 rounded col-span-4 row-span-2'>
-        hiii
-        <CreditCard />
+      <div className='rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
+        <div className='flex justify-center items-start'>
+          <CreditCard />
+        </div>
+        <div className='w-[60%]'>
+          <div className='flex flex-col justify-start items-left text-right text-lg h-[87%]'>
+            <div className='m-1'>
+              فقط با یه کلیک هدف‌های مالیت رو سریعتر به دست بیار
+            </div>
+            <div className='m-1'>
+              اینجا پر از نکته است پس وقت رو هدر نده
+            </div>
+            <div className='m-1'>منتظرتیم</div>
+            <div className='text-[#c5c5c5] text-[13px] mt-4'>
+              مرجع آموزش هوش مالی، سرمایه گذاری، بورس، کسب و کار، بیزینس کوچینگ و توسعه فردی
+            </div>
+            <div className='text-[#c5c5c5] text-[13px]'>
+              بیش از صدها ساعت آموزش ویدئویی و صوتی در زمینه‌های مابی، اقتصادی و مدیریت
+            </div>
+            <div className='text-[#c5c5c5] text-[13px]'>
+             دسترسی راحت و سریع به بروزترین آموزش‌ها
+            </div>
+          </div>
+          <div className='flex justify-end'>
+            <div className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
+              بزن بریم
+            </div>
+          </div>
+        </div>
       </div>
     </m.div>
   )
