@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import '../components/component_css/ProfileInfo.css'
 import LineChart from '../components/LineChart'
 import Path from '../content/Images/path.png'
+import jet from '../content/Images/jet.png'
 import { motion as m } from 'framer-motion'
 import CreditCard from '../components/CreditCard'
 
@@ -173,9 +174,12 @@ function ProfileInfo() {
           </div>
         </div>
       </div>
-      <div className='rounded bg-[#39D5CF]'>
-        <div className='flex justify-center items-center mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
+      <div className='rounded bg-[#2F2E41] flex justify-center flex-col items-center'>
+        <div className='text-white flex'>
+          میخوام باهات یه رازی و درمیون بذارم
+        </div>
+        <div className='flex justify-center items-center mx-[1vw] absolute top-[-4vw]'>
+          <img width={"200vw"} height={"50vh"} src={jet} />
         </div>
       </div>
       <div className='rounded bg-[#39D5CF]'>
@@ -213,7 +217,7 @@ function ProfileInfo() {
               بیش از صدها ساعت آموزش ویدئویی و صوتی در زمینه‌های مابی، اقتصادی و مدیریت
             </div>
             <div className='text-[#c5c5c5] text-[13px]'>
-             دسترسی راحت و سریع به بروزترین آموزش‌ها
+              دسترسی راحت و سریع به بروزترین آموزش‌ها
             </div>
           </div>
           <div className='flex justify-end'>
