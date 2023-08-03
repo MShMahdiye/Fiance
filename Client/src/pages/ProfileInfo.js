@@ -2,8 +2,11 @@ import { gql, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../components/component_css/ProfileInfo.css'
-import LineChart from '../components/LineChart'
+import up from "../content/Images/upp.png"
+import progress from "../content/Images/Progress.png"
 import Path from '../content/Images/path.png'
+import Path2 from '../content/Images/path2.png'
+import Path3 from '../content/Images/path3.png'
 import jet from '../content/Images/jet.png'
 import { motion as m } from 'framer-motion'
 import CreditCard from '../components/CreditCard'
@@ -32,13 +35,16 @@ function ProfileInfo() {
   const [name, setName] = useState('')
   const [userName, setUserName] = useState('')
   const progress = require('../content/Images/Progress.png')
-  const [totalAmount, setTotalAmount] = useState(0)
   const userImg = require('../content/Images/user.png')
   const chart = require('../content/Images/Chart.png')
   const cardImg = require('../content/Images/Cards.png')
   const activityImg = require('../content/Images/Activity.png')
 
   const [somenewtags, setsomenewtags] = useState([])
+  let totalAmount = 0;
+  let thisDay = 0
+  let thisMonth = 0;
+  let thisYear = 0;
 
   const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
 
@@ -90,6 +96,7 @@ function ProfileInfo() {
   const dailyExpenses = {}
 
   const createYearly = () => {
+    console.log("somenewTags :ijn ", somenewtags);
     somenewtags.forEach(expense => {
       const date = new Date(expense.date)
       const year = date.getFullYear();
@@ -118,6 +125,7 @@ function ProfileInfo() {
   }
 
   const createDaily = () => {
+    totalAmount = 0;
     somenewtags.forEach(expense => {
       const date = new Date(expense.date)
       const day = date.getDate();
@@ -128,19 +136,15 @@ function ProfileInfo() {
       else {
         dailyExpenses[day] = amount;
       }
+      totalAmount += amount
     })
   }
-
-  console.log("image in profile info ::",);
 
 
   createYearly();
   createMonthly();
   createDaily();
-
-
-  console.log('data in profile : ', data);
-
+  console.log("dily : : ", dailyExpenses);
 
   return (
     <m.div
@@ -150,12 +154,25 @@ function ProfileInfo() {
       exit={{ opacity: 1 }}
       className='grid grid-cols-5 grid-rows-3 h-[89vh] gap-10 p-5'>
       <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
-        <div className='flex flex-col justify-start h-full items-center pt-[3vw]'>
-          <div className='profile-image-container mb-[2vw]'>
-            <img src={userImg} />
+        <div className='flex flex-col justify-between h-full items-center shadow-lg p-[3vw]'>
+          <div className='flex  flex-col justify-center items-start text-right'>
+            <div className='profile-image-container mb-[2vw]'>
+              <img src={userImg} />
+            </div>
+            <div className='text-[15px] text-left'>{name}</div>
+            <div className='text-[15px] text-[#d3d5d5] text-left'>{userName}</div>
           </div>
-          <div className='text-[1.5vw] text-left'>{name}</div>
-          <div className='text-[1.5vw] text-[#d3d5d5] text-left'>{userName}</div>
+          <div className='rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
+            <div className='text-white flex'>
+              کلکسیون بهترین کتاب‌های پولساز
+            </div>
+            <div className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
+              بزن بریم
+            </div>
+            <div className='flex justify-center items-center mx-[1vw] absolute bottom-[13vw]'>
+              <img width={"200vw"} height={"50vh"} src={jet} />
+            </div>
+          </div>
           <div className='EditUser'>
             <Link to={'/dashboard/edit'}>
               <span>
@@ -174,28 +191,39 @@ function ProfileInfo() {
           </div>
         </div>
       </div>
-      <div className='rounded bg-[#2F2E41] flex justify-center flex-col items-center'>
-        <div className='text-white flex'>
-          میخوام باهات یه رازی و درمیون بذارم
-        </div>
-        <div className='flex justify-center items-center mx-[1vw] absolute top-[-4vw]'>
-          <img width={"200vw"} height={"50vh"} src={jet} />
-        </div>
-      </div>
-      <div className='rounded bg-[#39D5CF]'>
-        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
+      <div className='rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"200vw"} height={"50vh"} src={Path} />
         </div>
-      </div>
-      <div className='rounded bg-[#39D5CF]'>
-        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
+        <div>
+          <div>سال جاری</div>
+          <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
         </div>
       </div>
-      <div className='rounded bg-[#39D5CF]'>
-        <div className='flex justify-center items-center rounded bg-[#39D5CF] mx-[1vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
+      <div className='rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path2} />
         </div>
+        <div>
+          <div>ماه جاری</div>
+          <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
+        </div>
+      </div>
+      <div className='rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
+          <img width={"200vw"} height={"50vh"} src={Path} />
+          <div>
+            <div>روز جاری</div>
+            <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
+          </div>
+        </div>
+      </div>
+      <div className='rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+        <div className='flex flex-col justify-center items-start'>
+          <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
+          <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
+        </div>
+        <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </div>
       <div className='rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
         <div className='flex justify-center items-start'>
