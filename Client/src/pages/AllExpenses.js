@@ -1,6 +1,6 @@
 import { gql, useQuery, useMutation } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import wel from '../content/Images/wel.png'
 import { ChartComponent } from '../components/Chart'
 import '../components/component_css/allexpences.css'
 import '../components/component_css/ProfileInfo.css'
@@ -161,14 +161,11 @@ function AllExpenses() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}>
-      <div className='expenses-container'>
-        <Link to={'/dashboard/summary'}>
-          <div className='EditUser'>
-            مشاهده گزارش‌ها
-          </div>
-        </Link>
-        <div className='flex m-[2vw] flex-4 justify-center items-center'><ChartComponent /></div>
-        <div className='m-[2vw] flex-1'>
+      <div className='grid grid-cols-4 grid-row-4'>
+        <div className='col-span-4'>
+          <div className='flex m-[2vw] flex-4 justify-center items-center'><ChartComponent /></div>
+        </div>
+        <div className='col-span-4 row-span-2 m-[2vw] flex justify-center items-center'>
           <table>
             <thead>
               <th>عنوان</th>
@@ -187,7 +184,7 @@ function AllExpenses() {
                     <td>{expense.amount}</td>
                     <td className='flex justify-center items-center'>
                       <div className='m-[1vw]'>
-                        <img onClick={() => {
+                        <img width={"20vw"} height={"20vw"} onClick={() => {
                           const arr = [...somenewtags]
                           arr[i].isSelected = !arr[i].isSelected
                           setsomenewtags(arr)
@@ -196,7 +193,7 @@ function AllExpenses() {
                         }} src={trash} />
                       </div>
                       <div className='m-[1vw]'>
-                        <img src={edit} />
+                        <img width={"20vw"} height={"20vw"} src={edit} />
                       </div>
                     </td>
                   </tr>
