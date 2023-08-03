@@ -152,8 +152,8 @@ function ProfileInfo() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className='grid grid-cols-5 grid-rows-3 h-[89vh] gap-10 p-5'>
-      <div className='row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
+      className='grid-responsive grid grid-cols-5 grid-rows-3 h-[89vh] gap-10 p-5'>
+      <div className='bar-res row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
         <div className='flex flex-col justify-between h-full items-center shadow-lg p-[3vw]'>
           <div className='flex  flex-col justify-center items-start text-right'>
             <div className='profile-image-container mb-[2vw]'>
@@ -162,7 +162,7 @@ function ProfileInfo() {
             <div className='text-[15px] text-left'>{name}</div>
             <div className='text-[15px] text-[#d3d5d5] text-left'>{userName}</div>
           </div>
-          <div className='rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
+          <div className='jet-res rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
             <div className='text-white flex'>
               کلکسیون بهترین کتاب‌های پولساز
             </div>
@@ -191,60 +191,60 @@ function ProfileInfo() {
           </div>
         </div>
       </div>
-      <div className='rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white'>
-        <div className='flex justify-center items-center rounded mx-[.5vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
-        </div>
-        <div>
-          <div>سال جاری</div>
-          <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
-        </div>
-      </div>
-      <div className='rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white'>
-        <div className='flex justify-center items-center rounded mx-[.5vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path2} />
-        </div>
-        <div>
-          <div>ماه جاری</div>
-          <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
-        </div>
-      </div>
-      <div className='rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white'>
-        <div className='flex justify-center items-center rounded mx-[.5vw]'>
-          <img width={"200vw"} height={"50vh"} src={Path} />
-          <div>
-            <div>روز جاری</div>
-            <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
-          </div>
-        </div>
-      </div>
-      <div className='rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+      <div className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
         <div className='flex flex-col justify-center items-start'>
           <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
           <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
         </div>
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </div>
-      <div className='rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
-        <div className='flex justify-center items-start'>
+      <div className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
+          <img width={"150vw"} height={"50vh"} src={Path} />
+        </div>
+        <div>
+          <div className='text-lg mb-2'>سال جاری</div>
+          <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
+        </div>
+      </div>
+      <div className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
+          <img width={"160vw"} height={"50vh"} src={Path2} />
+        </div>
+        <div>
+          <div className='text-lg mb-2'>ماه جاری</div>
+          <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
+        </div>
+      </div>
+      <div className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+        <div className='flex justify-center items-center rounded mx-[.5vw]'>
+          <img width={"160vw"} height={"50vh"} src={Path} />
+          <div>
+            <div className='text-lg mb-2'>روز جاری</div>
+            <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
+          </div>
+        </div>
+      </div>
+      <div className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
+        <div className='card flex justify-center items-start'>
           <CreditCard />
         </div>
-        <div className='w-[60%]'>
-          <div className='flex flex-col justify-start items-left text-right text-lg h-[87%]'>
-            <div className='m-1'>
+        <div className='credit-txt w-[60%]'>
+          <div className='flex flex-col justify-start items-left text-right text-[1vw] h-[87%]'>
+            <div className='m-2'>
               فقط با یه کلیک هدف‌های مالیت رو سریعتر به دست بیار
             </div>
-            <div className='m-1'>
+            <div className='m-2'>
               اینجا پر از نکته است پس وقت رو هدر نده
             </div>
-            <div className='m-1'>منتظرتیم</div>
-            <div className='text-[#c5c5c5] text-[13px] mt-4'>
+            <div className='m-2'>منتظرتیم</div>
+            <div className='text-[#c5c5c5] text-[1vw] mt-4 m-1'>
               مرجع آموزش هوش مالی، سرمایه گذاری، بورس، کسب و کار، بیزینس کوچینگ و توسعه فردی
             </div>
-            <div className='text-[#c5c5c5] text-[13px]'>
+            <div className='text-[#c5c5c5] text-[1vw] m-1'>
               بیش از صدها ساعت آموزش ویدئویی و صوتی در زمینه‌های مابی، اقتصادی و مدیریت
             </div>
-            <div className='text-[#c5c5c5] text-[13px]'>
+            <div className='text-[#c5c5c5] text-[1vw] m-1'>
               دسترسی راحت و سریع به بروزترین آموزش‌ها
             </div>
           </div>

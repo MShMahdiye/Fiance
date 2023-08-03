@@ -29,7 +29,7 @@
 }
 
 .profile-image-container{
-  background-color: #00CCF2;
+  background-color: #2D62ED;
   padding: 1vw;
   border-radius: 50%;
 }
@@ -102,3 +102,51 @@
   height: 89vh;
   background-color: #f9f9f9;
 }
+
+@media screen and (max-width:1000px) {
+.grid-responsive{
+  display: grid;
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:repeat(4,1fr);
+}
+.chart-res{
+  grid-column: span 2;
+}
+.credit-res-cont{
+  grid-column: span 4;
+  grid-row: span 2;
+}
+.bar-res{
+  grid-row: span 4;
+}
+.jet-res{
+  display: none;
+}
+.credit-txt{
+  font-size: 1px !important;
+}
+}
+
+@media screen and (max-height:600px) {
+  .grid-responsive{
+    display: grid;
+    grid-template-columns:repeat(5,1fr);
+    grid-template-rows:repeat(4,1fr);
+  }
+  .chart-res{
+    display: none;
+  }
+  .credit-res-cont{
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+  .bar-res{
+    grid-row: span 4;
+  }
+  .jet-res{
+    display: none;
+  }
+  .credit-txt{
+    font-size: 1px !important;
+  }
+  }
