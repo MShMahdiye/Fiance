@@ -61,9 +61,9 @@ export function ChartComponent({ year, month, day }) {
     data.getMyExpenses.forEach(expense => {
 
       console.log("uuuu : ",expense);
-      const tag = expense.tags[0].name;
-      const amount = expense.amount;
-      const color = expense.tags[0].color
+      const tag = expense?.tags[0]?.name;
+      const amount = expense?.amount;
+      const color = expense?.tags[0]?.color
       if (amountOfTags[tag]) {
         amountOfTags[tag] += amount;
 

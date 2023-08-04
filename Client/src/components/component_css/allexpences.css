@@ -1,46 +1,60 @@
-table,th,td{
+table,
+th,
+td {
   padding: .5vw;
-  
+
 }
 
-table{
+table {
   width: 100%;
   border-radius: .3rem;
   overflow: auto;
 }
 
-thead{
-  background-color: #3f3d5661 ;
+thead {
+  background-color: #3f3d5661;
 }
 
-tr:nth-child(odd){
+tr:nth-child(odd) {
   background-color: #3f3d5616;
 }
 
 @media screen and (min-width : 900px) {
-  .expenses-container{
+  .expenses-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .expenses-container img{
+
+  .expenses-container img {
     width: 1vw;
     height: 1vw;
   }
 }
 
 @media screen and (max-width : 900px) {
-  .expenses-container{
+  .expenses-container {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
   }
 
-  table{
+  table {
     width: 70vw;
   }
-  .expenses-container img{
+
+  .expenses-container img {
     width: 3vw;
     height: 3vw;
   }
+}
+
+.nodata-cont {
+  height: 60vh;
+  width: 60vh;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(0, 68, 255, 0.05);
 }

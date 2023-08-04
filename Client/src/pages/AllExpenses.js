@@ -5,6 +5,8 @@ import { ChartComponent } from '../components/Chart'
 import '../components/component_css/allexpences.css'
 import '../components/component_css/ProfileInfo.css'
 import { motion as m } from 'framer-motion'
+import nodata from "../content/Images/nodata.png"
+import { Link } from 'react-router-dom'
 
 const getMyExpenses = gql`
   query GetMyExpenses {
@@ -153,56 +155,69 @@ function AllExpenses() {
   createMonthly();
   createDaily();
 
-
+  console.log(somenewtags);
 
   return (
-
     <m.div initial={{ y: "100%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}>
-      <div className='grid grid-cols-4 grid-row-4'>
-        <div className='col-span-4'>
-          <div className='flex m-[2vw] flex-4 justify-center items-center'><ChartComponent /></div>
-        </div>
-        <div className='col-span-4 row-span-2 m-[2vw] flex justify-center items-center'>
-          <table>
-            <thead>
-              <th>عنوان</th>
-              <th>تاریخ</th>
-              <th>میزان هزینه</th>
-              <th>عملیات</th>
-            </thead>
-            {somenewtags.map((expense, i) => {
-              console.log('ex in sm t = ', somenewtags);
-              const date = new Date(expense.date)
-              if (expense.tags.length > 0) {
-                return (
-                  <tr key={i}>
-                    <td>{expense.tags[0].name}</td>
-                    <td>{date.getDate()} {months[date.getMonth()]},{date.getFullYear()}</td>
-                    <td>{expense.amount}</td>
-                    <td className='flex justify-center items-center'>
-                      <div className='m-[1vw]'>
-                        <img width={"20vw"} height={"20vw"} onClick={() => {
-                          const arr = [...somenewtags]
-                          arr[i].isSelected = !arr[i].isSelected
-                          setsomenewtags(arr)
+      {
+        somenewtags?.length > 0 ?
+          <div className='grid grid-cols-4 grid-row-4'>
+            <div className='col-span-4'>
+              <div className='flex m-[2vw] flex-4 justify-center items-center'><ChartComponent /></div>
+            </div>
+            <div className='col-span-4 row-span-2 m-[2vw] flex justify-center items-center'>
+              <table>
+                <thead>
+                  <th>عنوان</th>
+                  <th>تاریخ</th>
+                  <th>میزان هزینه</th>
+                  <th>عملیات</th>
+                </thead>
+                {somenewtags?.map((expense, i) => {
+                  console.log("exppp : ",expense);
+                  console.log('ex in sm t = ', somenewtags);
+                  const date = new Date(expense?.date)
+                  if (expense?.tags?.length > 0) {
+                    return (
+                      <tr key={i}>
+                        <td>{expense?.tags[0]?.name}</td>
+                        <td>{date.getDate()} {months[date.getMonth()]},{date.getFullYear()}</td>
+                        <td>{expense.amount}</td>
+                        <td className='flex justify-center items-center'>
+                          <div className='m-[1vw]'>
+                            <img width={"20vw"} height={"20vw"} onClick={() => {
+                              const arr = [...somenewtags]
+                              arr[i].isSelected = !arr[i].isSelected
+                              setsomenewtags(arr)
 
-                          handleSubmit();
-                        }} src={trash} />
-                      </div>
-                      <div className='m-[1vw]'>
-                        <img width={"20vw"} height={"20vw"} src={edit} />
-                      </div>
-                    </td>
-                  </tr>
-                )
-              }
-            })}
-          </table>
-        </div>
-      </div>
+                              handleSubmit();
+                            }} src={trash} />
+                          </div>
+                          <div className='m-[1vw]'>
+                            <img width={"20vw"} height={"20vw"} src={edit} />
+                          </div>
+                        </td>
+                      </tr>
+                    )
+                  }
+                })}
+              </table>
+            </div>
+          </div> 
+          :
+          <div className='h-[80vh] flex justify-center items-center'>
+            <div className='nodata-cont flex flex-col justify-center items-center'>
+              <div>
+                <img src={nodata} />
+              </div>
+              <div className='text-[1vw] my-10'>هنوز هزینه‌ای افزوده نشده است</div>
+              <Link to={'/dashboard/hazine'}><div className='text-blue-500'>افزودن</div></Link>
+            </div>
+          </div>
+      }
     </m.div>
 
   )

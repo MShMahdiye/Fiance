@@ -49,41 +49,33 @@ function Tags() {
 
   const navigate = useNavigate()
 
-  console.log("data : ", data);
+  // console.log("data : ", data);
 
   useEffect(() => {
 
     if (data) {
+      console.log("data : ", data);
 
-      console.log('get my tags : ', data.getMyTags);
-      setInitialTags(data.getMyTags)
       setsomenewtags(data.getMyTags.map(item => ({ ...item, isSelected: false })))
-
-      console.log('tags : ', tags);
-      tags.map((tag) => {
+      //داره تکراری ها رو حذف میکنه
+      somenewtags.map((tag) => {
         if (tagsId.indexOf(tag) === -1) {
           tagsId.push(tag._id);
-          console.log(tagsId);
         }
       })
-      console.log('tags Id : ', tagsId);
+
+      console.log(somenewtags);
 
     }
 
   }, [data])
-
-  useEffect(() => {
-    console.log('some new tags in useEffect = ', somenewtags);
-  }, [tagInfo])
 
   const handleChange = (e) => {
     setTagInfo({ ...tagInfo, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async () => {
-    console.log('id from props :', id);
     const x = String(id)
-    console.log('id from props after convert :', x);
     try {
 
       const { data: { edit_tag: { status } } } = await edit(
@@ -123,7 +115,7 @@ function Tags() {
     })
     tagsList = [...Object.keys(tagsObj).map(item => tagsObj[item])]
     tagsList = [...tagsList.filter(item => !item.name == "")]
-    console.log("tagsList : ", tagsList);
+    // console.log("tagsList : ", tagsList);
   }
 
   create()
@@ -166,15 +158,18 @@ function Tags() {
                       <TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' />
                     </div>
                     <div className='mx-[2vw] w-[25vw] flex justify-center items-center'>
-                      <Button fullWidth size='large' variant='contained' onClick={() => { setShow(!show); }}>رنگ</Button>
+                      <Button fullWidth size='large' variant='contained' onClick={() => { setShow(true); }}>رنگ</Button>
                     </div>
-                    {show && tag.isSelected
+                    {show
                       ?
                       <div className='colorPick-modal' onClick={() => { setShow(false); }}>
                         <div className='z-500000'>
                           <SketchPicker
                             onChange={(color) => {
                               setSketchPickerColor(color.rgb);
+                              if(tagInfo.name === ''){
+                                setTagInfo({...tagInfo,name: tag.name}) 
+                              }
                             }}
                             color={sketchPickerColor}
                           />
