@@ -219,11 +219,11 @@ function ProfileInfo() {
       <div className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path} />
-          <div>
+        </div>
+        <div>
             <div className='text-lg mb-2'>روز جاری</div>
             <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
           </div>
-        </div>
       </div>
       <div className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
         <div className='card flex justify-center items-start'>

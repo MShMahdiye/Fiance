@@ -16,7 +16,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 89vh;
+  min-height: 89vh;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
 }

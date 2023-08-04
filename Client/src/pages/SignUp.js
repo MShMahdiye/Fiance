@@ -5,6 +5,8 @@ import Cookies from 'universal-cookie';
 import { gql, useMutation } from "@apollo/client"
 import { useState } from 'react'
 import { motion as m } from 'framer-motion';
+import Logo from '../content/Images/light-logo.png'
+import '../components/component_css/Tags.css'
 
 const SignUpMutation = gql`
   mutation Mutation($name: String!, $username: String!, $password: String!) {
@@ -56,26 +58,28 @@ function SignUp() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className='px-[3vw] py-[1vw] h-screen'>
-      <div className='text-[1vw] text-[#6C63FF] flex justify-between'><div><Link to={'/login'}>ورود</Link></div><div></div></div>
-      <div className='flex h-[90%] justify-center items-center'>
-        <div className='flex justify-center items-center'>
-          <div>
-            <div className='py-[3vw]'>
-              <div className='w-[40vw] flex flex-col justify-center items-center'>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="name" variant='standard' onChange={handleChange} label='نام' /></div>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="username" variant='standard' onChange={handleChange} label='نام کاربری' /></div>
-                <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="pass" variant='standard' onChange={handleChange} label='رمز عبور' /></div>
-                <div className='flex justify-center items-center mb-[2vw] w-[25vw]'>
-                  <div className='w-[8vw]'>
-                    <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
-                  </div>
+      className='create-tag-container flex justify-center item-center h-[100vh] bg-[#fff]'>
+      <div className='absolute top-1 right-1 text-white'><Link to={'/login'}>ورود</Link></div>
+      <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
+        <div className='flex justify-between w-[60vw] items-center'>
+          <div className='flex justify-center items-center'>
+            <div className='flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
+              <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="name" variant='standard' onChange={handleChange} label='نام' /></div>
+              <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="username" variant='standard' onChange={handleChange} label='نام کاربری' /></div>
+              <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="pass" variant='standard' onChange={handleChange} label='رمز عبور' /></div>
+              <div className='flex justify-center items-center w-[25vw]'>
+                <div className='w-[8vw] my-[2vw]'>
+                <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
                 </div>
               </div>
             </div>
           </div>
+          <div className='flex justify-center items-center m-4'>
+            <div ><img width={'1000vw'} src={Logo} /></div>
+          </div>
         </div>
       </div>
+
     </m.div>
   )
 }

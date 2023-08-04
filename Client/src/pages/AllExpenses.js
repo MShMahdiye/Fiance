@@ -165,6 +165,7 @@ function AllExpenses() {
       {
         somenewtags?.length > 0 ?
           <div className='grid grid-cols-4 grid-row-4'>
+            <div className='absolute bottom-5 right-5 text-blue-500'><Link to={'/dashboard/summary'}>مشاهده گزارش‌ها</Link></div>
             <div className='col-span-4'>
               <div className='flex m-[2vw] flex-4 justify-center items-center'><ChartComponent /></div>
             </div>
