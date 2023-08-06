@@ -153,16 +153,44 @@ function ProfileInfo() {
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
       className='grid-responsive grid grid-cols-5 grid-rows-3 h-[89vh] gap-10 p-5'>
-      <div className='bar-res row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
+      <m.div
+        initial={{ x: "100%" }}
+        animate={{ x: "0%" }}
+        transition={{ delay: 0.2, duration: 0.75, ease: "easeOut" }}
+        exit={{ opacity: 1 }}
+        className='bar-res row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
         <div className='flex flex-col justify-between h-full items-center shadow-lg p-[3vw]'>
           <div className='flex  flex-col justify-center items-start text-right'>
-            <div className='profile-image-container mb-[2vw]'>
+            <m.div
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              transition={{ delay: 0.8, duration: 1.0, ease: "easeOut" }}
+              exit={{ opacity: 1 }}
+              className='profile-image-container mb-[2vw]'>
               <img src={userImg} />
+            </m.div>
+            <div
+              className='text-[15px] text-left overflow-hidden'>
+              <m.span
+                animate={{ y: 0 }}
+                initial={{ y: "100%" }}
+                transition={{ delay: 0.8, duration: 0.5 }}>
+                {name}
+              </m.span></div>
+            <div className='text-[15px] text-[#d3d5d5] text-left overflow-hidden'>
+              <m.span
+                animate={{ y: 0 }}
+                initial={{ y: "100%" }}
+                transition={{ delay: 0.8, duration: 0.5 }}>{userName}
+              </m.span>
             </div>
-            <div className='text-[15px] text-left'>{name}</div>
-            <div className='text-[15px] text-[#d3d5d5] text-left'>{userName}</div>
           </div>
-          <div className='jet-res rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
+          <m.div
+            initial={{opacity: 0 }}
+            animate={{ opacity: 1}}
+            transition={{ delay: 1.4, duration: 1.2, ease: "easeOut" }}
+            exit={{ opacity: 1 }}
+            className='jet-res rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
             <div className='text-white flex'>
               کلکسیون بهترین کتاب‌های پولساز
             </div>
@@ -172,7 +200,7 @@ function ProfileInfo() {
             <div className='flex justify-center items-center mx-[1vw] absolute bottom-[13vw]'>
               <img width={"200vw"} height={"50vh"} src={jet} />
             </div>
-          </div>
+          </m.div>
           <div className='EditUser'>
             <Link to={'/dashboard/edit'}>
               <span>
@@ -190,15 +218,25 @@ function ProfileInfo() {
             </Link>
           </div>
         </div>
-      </div>
-      <div className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+      </m.div>
+      <m.div 
+      initial={{opacity: 0 }}
+      animate={{ opacity: 1}}
+      transition={{ delay: 2.0, duration: 1.9, ease: "circOut" }}
+      exit={{ opacity: 1 }}
+      className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
         <div className='flex flex-col justify-center items-start'>
           <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
           <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
         </div>
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
-      </div>
-      <div className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      </m.div>
+      <m.div 
+      initial={{opacity: 0 }}
+      animate={{ opacity: 1}}
+      transition={{ delay: 2.7, duration: 1.9, ease: "circOut" }}
+      exit={{ opacity: 1 }}
+      className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"150vw"} height={"50vh"} src={Path} />
         </div>
@@ -206,8 +244,13 @@ function ProfileInfo() {
           <div className='text-lg mb-2'>سال جاری</div>
           <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
         </div>
-      </div>
-      <div className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      </m.div>
+      <m.div 
+      initial={{opacity: 0 }}
+      animate={{ opacity: 1}}
+      transition={{ delay: 3.4, duration: 1.9, ease: "circOut" }}
+      exit={{ opacity: 1 }}
+      className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path2} />
         </div>
@@ -215,17 +258,27 @@ function ProfileInfo() {
           <div className='text-lg mb-2'>ماه جاری</div>
           <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
         </div>
-      </div>
-      <div className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      </m.div>
+      <m.div 
+      initial={{opacity: 0 }}
+      animate={{ opacity: 1}}
+      transition={{ delay: 4.1, duration: 1.9, ease: "circOut" }}
+      exit={{ opacity: 1 }}
+      className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path} />
         </div>
         <div>
-            <div className='text-lg mb-2'>روز جاری</div>
-            <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
-          </div>
-      </div>
-      <div className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
+          <div className='text-lg mb-2'>روز جاری</div>
+          <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
+        </div>
+      </m.div>
+      <m.div 
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ delay: 4.7, duration: 1.0, ease: "easeOut" }}
+      exit={{ opacity: 1 }}
+      className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
         <div className='card flex justify-center items-start'>
           <CreditCard />
         </div>
@@ -254,7 +307,7 @@ function ProfileInfo() {
             </div>
           </div>
         </div>
-      </div>
+      </m.div>
     </m.div>
   )
 }
