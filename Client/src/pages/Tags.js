@@ -3,7 +3,7 @@ import { alpha } from '@material-ui/core';
 import { Button, TextField } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react'
 import '../components/component_css/Tags.css'
-import { SketchPicker, BlockPicker } from "react-color";
+import { SketchPicker, BlockPicker, CirclePicker } from "react-color";
 import { Link, useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 
@@ -159,6 +159,17 @@ function Tags() {
                     </div>
                     <div className='mx-[2vw] w-[25vw] flex justify-center items-center'>
                       <Button fullWidth size='large' variant='contained' onClick={() => { setShow(true); }}>رنگ</Button>
+                    </div>
+                    <div>
+                    <CirclePicker
+                            onChange={(color) => {
+                              setSketchPickerColor(color.rgb);
+                              if(tagInfo.name === ''){
+                                setTagInfo({...tagInfo,name: tag.name}) 
+                              }
+                            }}
+                            color={sketchPickerColor}
+                            />
                     </div>
                     {show
                       ?
