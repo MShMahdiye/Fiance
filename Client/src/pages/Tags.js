@@ -130,7 +130,73 @@ function Tags() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}>
-      {
+
+      <div className='EditUser'>
+        <Link to={'/dashboard/createtag'}>
+          <span>
+            <svg xmlnsXlink="http://www.w3.org/1999/xlink"
+              xmlns="http://www.w3.org/2000/svg" width="14"
+              height="14" viewBox="0 0 14 14"
+              class="site-nav-dropdown-icon small-icon">
+              <path d="M7 0.75L7 13.25M13.25 7L0.75 7"
+                stroke="#E54F6D" stroke-width="1.5px" stroke-linecap="round"></path>
+            </svg>
+          </span>
+        </Link>
+      </div>
+      <div className='flex justify-center items-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
+          {
+            tagsList.map((tag, i) => {
+              return (
+                <div
+                  style=
+                  {{
+                    padding: '1vw 2vw', borderRadius: 12, cursor: 'pointer'
+                  }}
+                  className='mb-[2vw] flex flex-col items-center p-5 shadow-md w-[350px]' key={tag._id} onClick={() => {
+                    setId(tag._id);
+                    const arr = [...somenewtags]
+                    arr[i].isSelected = true
+                    setsomenewtags(arr)
+                  }}>
+                  <div className='flex justify-center items-center mb-4'>
+                    <div className='flex justify-center items-center'>
+                      <div className='w-[0.5vw] h-[0.5vw] rounded-full' style={{ background: `${tag.color}` }}></div>
+                    </div>
+                    <div className='w-[5vw] mx-[1vw] flex justify-right items-center'>
+                      {tag.name}
+                    </div>
+                  </div>
+                  <div className='mx-[2vw] w-[25vw] flex justify-center items-center mb-4'>
+                    <TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' />
+                  </div>
+                  <div className='mb-6'>
+                    <CirclePicker
+                      key={tag._id}
+                      onChange={(color) => {
+                        setSketchPickerColor(color.rgb);
+                        if (tagInfo.name === '') {
+                          setTagInfo({ ...tagInfo, name: tag.name })
+                        }
+                      }}
+                      color={show ? sketchPickerColor : ''}
+                      
+                    />
+                  </div>
+                  <div className='w-[4vw] flex items-center mb-4'>
+                    <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+
+
+
+      {/* {
         tagsList.map((tag, i) => {
 
           return (
@@ -161,15 +227,15 @@ function Tags() {
                       <Button fullWidth size='large' variant='contained' onClick={() => { setShow(true); }}>رنگ</Button>
                     </div>
                     <div>
-                    <CirclePicker
-                            onChange={(color) => {
-                              setSketchPickerColor(color.rgb);
-                              if(tagInfo.name === ''){
-                                setTagInfo({...tagInfo,name: tag.name}) 
-                              }
-                            }}
-                            color={sketchPickerColor}
-                            />
+                      <CirclePicker
+                        onChange={(color) => {
+                          setSketchPickerColor(color.rgb);
+                          if (tagInfo.name === '') {
+                            setTagInfo({ ...tagInfo, name: tag.name })
+                          }
+                        }}
+                        color={sketchPickerColor}
+                      />
                     </div>
                     {show
                       ?
@@ -178,8 +244,8 @@ function Tags() {
                           <SketchPicker
                             onChange={(color) => {
                               setSketchPickerColor(color.rgb);
-                              if(tagInfo.name === ''){
-                                setTagInfo({...tagInfo,name: tag.name}) 
+                              if (tagInfo.name === '') {
+                                setTagInfo({ ...tagInfo, name: tag.name })
                               }
                             }}
                             color={sketchPickerColor}
@@ -199,20 +265,7 @@ function Tags() {
             </div>
           )
         })
-      }
-      <div className='EditUser'>
-        <Link to={'/dashboard/createtag'}>
-          <span>
-            <svg xmlnsXlink="http://www.w3.org/1999/xlink"
-              xmlns="http://www.w3.org/2000/svg" width="14"
-              height="14" viewBox="0 0 14 14"
-              class="site-nav-dropdown-icon small-icon">
-              <path d="M7 0.75L7 13.25M13.25 7L0.75 7"
-                stroke="#E54F6D" stroke-width="1.5px" stroke-linecap="round"></path>
-            </svg>
-          </span>
-        </Link>
-      </div>
+      } */}
     </m.div>
   )
 }
