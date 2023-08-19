@@ -181,14 +181,14 @@ function Hazine() {
         </div>
       </div>
       <div className='col-span-1 row-span-1 lg:col-span-3 lg:row-span-3 md:col-span-3 md:row-span-3'>
-        <div className='w-[100%] h-full p-5 rounded-md bg-[#2D62ED]'><MapComponent setPropsPosition={setLocation} /></div>
+        <div className='w-[100%] h-full p-5 rounded-md bg-[#fbfbfb]'><MapComponent setPropsPosition={setLocation} /></div>
       </div>
-      <div className='bg-[#2D62ED] p-5 rounded-md'>
+      <div className='bg-[#fbfbfb] p-5 rounded-md'>
         <div className='p-10 w-full h-full rounded bg-[#fff]'>
           <TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' />
         </div>
       </div>
-      <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#2D62ED] p-5 rounded-md'>
+      <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#fbfbfb] p-5 rounded-md'>
         <PersianDatePicker setSelectedDate={setSelectedDate} />
       </div>
       <div className='fixed top-21 left-5'><div><Button fullWidth size='large' variant='contained' onClick={handleSubmit}>افزودن</Button></div></div>
