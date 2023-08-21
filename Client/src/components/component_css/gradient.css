@@ -1,17 +1,24 @@
-.gradient-card{
- width: 22vw;
- height: 25vh;
-border-radius: 1.5rem;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-background: hsla(331, 100%, 50%, .75);
+.gradient-card {
+  width: 22vw;
+  height: 25vh;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: hsla(331, 100%, 50%, .75);
 
-background: linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
+  background: linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
 
-background: -moz-linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
+  background: -moz-linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
 
-background: -webkit-linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(178, 65%, 53%, .75) 0%, hsla(183, 67%, 59%, .75) 0%, hsla(223, 84%, 55%, .75) 32%, hsla(281, 100%, 35%, .75) 68%, hsla(331, 100%, 50%, .75) 100%);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#39D5CF", endColorstr="#51D4DC", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#39D5CF", endColorstr="#51D4DC", GradientType=1);
+}
+
+.gradient-container {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 40;
 }

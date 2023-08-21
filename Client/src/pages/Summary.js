@@ -5,6 +5,8 @@ import { motion as m } from 'framer-motion'
 import up from "../content/Images/upp.png"
 import Path from '../content/Images/path.png'
 import Path2 from '../content/Images/path2.png'
+import chart3d from '../content/Images/chart3d.png'
+import '../components/component_css/gradient.css'
 
 const getMyExpenses = gql`
 query GetMyExpenses {
@@ -114,7 +116,7 @@ export default function Summary() {
   createYearly();
   createMonthly();
   createDaily();
-  console.log("KKKKKKKKKKKKK",yearlyExpenses[1402]);
+  console.log("KKKKKKKKKKKKK", yearlyExpenses[1402]);
 
   return (
     <m.div
@@ -153,11 +155,11 @@ export default function Summary() {
           <img width={"160vw"} height={"50vh"} src={Path} />
         </div>
         <div>
-            <div className='text-lg mb-2'>روز جاری</div>
-            <div>{dailyExpenses[dailyExpenses[today.getDate] ] > 0 ? dailyExpenses[dailyExpenses[today.getDate] ] : 0}</div>
-          </div>
+          <div className='text-lg mb-2'>روز جاری</div>
+          <div>{dailyExpenses[dailyExpenses[today.getDate]] > 0 ? dailyExpenses[dailyExpenses[today.getDate]] : 0}</div>
+        </div>
       </div>
-      <div className='col-span-4 row-span-2'>
+      <div className='flex justify-center items-center shadow-lg rounded col-span-4 row-span-2 gradient-container'>
         <div className='h-full flex justify-center items-center'>
           <div className='flex justify-center items-center w-[30vw] h-[20vw] rounded mx-[1vw]'>
             <div className='w-[30vw] h-[20vw]'><LineChart mainList={yearlyExpenses} label={'سالیانه'} colorr={{ bg: 'rgba(197, 91, 113,1)', br: 'rgba(197, 91, 113,0.5)' }} /></div>
@@ -169,6 +171,9 @@ export default function Summary() {
             <div className='w-[30vw] h-[20vw]'><LineChart mainList={dailyExpenses} label={'روزانه'} colorr={{ bg: 'rgba(142, 182, 14,1)', br: 'rgb(142, 182, 149,0.5)' }} /></div>
           </div>
         </div>
+      </div>
+      <div className='fixed bottom-5 right-5 z-2 w-[97vw]'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#e7008a" fill-opacity="0.3" d="M0,256L40,224C80,192,160,128,240,96C320,64,400,64,480,80C560,96,640,128,720,170.7C800,213,880,267,960,272C1040,277,1120,235,1200,192C1280,149,1360,107,1400,85.3L1440,64L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
       </div>
     </m.div>
   )
