@@ -146,6 +146,8 @@ function Hazine() {
       <div className='col-span-1 lg:col-span-4 md:col-span-4'>
         <div className='flex flex-wrap justify-center mb-[2vw]'>
           {
+            somenewtags?.length > 0 
+            ?
             somenewtags?.map((tag, i) => (
               tag?.name !== ""
                 ?
@@ -164,6 +166,10 @@ function Hazine() {
                 :
                 null
             ))
+            :
+            <div className='flex justify-center items-center text-[#E54F6D] m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
+              <div>اول برچسب و اضافه کن</div>
+            </div>
           }
           <div className='flex justify-center items-center m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
             <Link to={'/dashboard/createtag'}>
@@ -190,6 +196,9 @@ function Hazine() {
       </div>
       <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#fbfbfb] p-5 rounded-md'>
         <PersianDatePicker setSelectedDate={setSelectedDate} />
+        <div className='w-60 h-70'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><circle cx="99.27" cy="190.88" r="71.71" fill="#fc498e"></circle><path fill="#34507c" d="M0 230.85L61.97 199.47 118.77 230.17 233.8 103.02 300 150 300 300 0 300 0 230.85z"></path><path fill="#ffffff" d="M233.8 103.02L300 300 300 150 233.8 103.02z" opacity="0.06"></path><path fill="#ffffff" d="M61.97 199.47L0 300 0 230.85 61.97 199.47z" opacity="0.1"></path></svg>
+        </div>
       </div>
       <div className='fixed top-21 left-5'><div><Button fullWidth size='large' variant='contained' onClick={handleSubmit}>افزودن</Button></div></div>
     </m.div>
