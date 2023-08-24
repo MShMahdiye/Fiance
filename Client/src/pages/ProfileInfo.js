@@ -39,6 +39,7 @@ function ProfileInfo() {
   const chart = require('../content/Images/Chart.png')
   const cardImg = require('../content/Images/Cards.png')
   const activityImg = require('../content/Images/Activity.png')
+  const urls = {book: "https://fidibo.com/category/management/financial-investment",}
 
   const [somenewtags, setsomenewtags] = useState([])
   let totalAmount = 0;
@@ -195,7 +196,7 @@ function ProfileInfo() {
               کلکسیون بهترین کتاب‌های پولساز
             </div>
             <div className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
-              بزن بریم
+            <Link to={{pathname: urls.book}} target="_blank" ><span>بزن بریم</span></Link> 
             </div>
             <div className='flex justify-center items-center mx-[1vw] absolute bottom-[13vw]'>
               <img width={"200vw"} height={"50vh"} src={jet} />
