@@ -39,7 +39,7 @@ function ProfileInfo() {
   const chart = require('../content/Images/Chart.png')
   const cardImg = require('../content/Images/Cards.png')
   const activityImg = require('../content/Images/Activity.png')
-  const urls = {book: "https://fidibo.com/category/management/financial-investment",}
+  const urls = { book: "https://fidibo.com/category/management/financial-investment", }
 
   const [somenewtags, setsomenewtags] = useState([])
   let totalAmount = 0;
@@ -187,17 +187,17 @@ function ProfileInfo() {
             </div>
           </div>
           <m.div
-            initial={{opacity: 0 }}
-            animate={{ opacity: 1}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 1.2, ease: "easeOut" }}
             exit={{ opacity: 1 }}
             className='jet-res rounded bg-[#2F2E41] h-[15vw] w-[15vw] flex justify-end p-2 flex-col items-center shadow-lg'>
             <div className='text-white flex'>
               کلکسیون بهترین کتاب‌های پولساز
             </div>
-            <div className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
-            <Link to={{pathname: urls.book}} target="_blank" ><span>بزن بریم</span></Link> 
-            </div>
+            <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
+              <Link to={{ pathname: urls.book }} target="_blank" ><span>بزن بریم</span></Link>
+            </m.div>
             <div className='flex justify-center items-center mx-[1vw] absolute bottom-[13vw]'>
               <img width={"200vw"} height={"50vh"} src={jet} />
             </div>
@@ -220,24 +220,33 @@ function ProfileInfo() {
           </div>
         </div>
       </m.div>
-      <m.div 
-      initial={{opacity: 0 }}
-      animate={{ opacity: 1}}
-      transition={{ delay: 2.0, duration: 1.9, ease: "circOut" }}
-      exit={{ opacity: 1 }}
-      className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        transition="transition"
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
         <div className='flex flex-col justify-center items-start'>
           <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
           <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
         </div>
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </m.div>
-      <m.div 
-      initial={{opacity: 0 }}
-      animate={{ opacity: 1}}
-      transition={{ delay: 2.7, duration: 1.9, ease: "circOut" }}
-      exit={{ opacity: 1 }}
-      className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"150vw"} height={"50vh"} src={Path} />
         </div>
@@ -246,12 +255,16 @@ function ProfileInfo() {
           <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
         </div>
       </m.div>
-      <m.div 
-      initial={{opacity: 0 }}
-      animate={{ opacity: 1}}
-      transition={{ delay: 3.4, duration: 1.9, ease: "circOut" }}
-      exit={{ opacity: 1 }}
-      className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path2} />
         </div>
@@ -260,12 +273,16 @@ function ProfileInfo() {
           <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
         </div>
       </m.div>
-      <m.div 
-      initial={{opacity: 0 }}
-      animate={{ opacity: 1}}
-      transition={{ delay: 4.1, duration: 1.9, ease: "circOut" }}
-      exit={{ opacity: 1 }}
-      className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path} />
         </div>
@@ -274,14 +291,18 @@ function ProfileInfo() {
           <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
         </div>
       </m.div>
-      <m.div 
-      initial={{ y: "100%" }}
-      animate={{ y: "0%" }}
-      transition={{ delay: 4.7, duration: 1.0, ease: "easeOut" }}
-      exit={{ opacity: 1 }}
-      className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
+      <m.div
+        initial={{ y: "100%" }}
+        animate={{ y: "0%" }}
+        transition={{ delay: 2.4, duration: 1.0, ease: "easeOut" }}
+        exit={{ opacity: 1 }}
+        className='credit-res-cont rounded col-span-4 row-span-2 flex justify-between p-7 shadow-lg'>
         <div className='card flex justify-center items-start'>
-          <CreditCard />
+          {
+            somenewtags?.length > 0 ?
+              <CreditCard /> :
+              <CreditCard props={{ new: 'new' }} />
+          }
         </div>
         <div className='credit-txt w-[60%]'>
           <div className='flex flex-col justify-start items-left text-right text-[1vw] h-[87%]'>
@@ -303,9 +324,9 @@ function ProfileInfo() {
             </div>
           </div>
           <div className='flex justify-end'>
-            <div className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
+            <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
               بزن بریم
-            </div>
+            </m.div>
           </div>
         </div>
       </m.div>

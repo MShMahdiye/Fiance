@@ -116,7 +116,7 @@ export default function Summary() {
   createYearly();
   createMonthly();
   createDaily();
-  console.log("KKKKKKKKKKKKK", yearlyExpenses[1402]);
+  console.log("KKKKKKKKKKKKK", new Date());
 
   return (
     <m.div
@@ -125,13 +125,17 @@ export default function Summary() {
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
       className='grid grid-col-4 grid-row-3 gap-5 h-[89vh] p-5'>
-      <div className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+      <m.div 
+      onHoverStart={{ opacity: 1, scale: 1 }}
+      onHoverEnd={{ opacity: 1, scale: 1.5 }}
+      transition={{ duration: 0.5 }}
+      className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
         <div className='flex flex-col justify-center items-start'>
           <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
           <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
         </div>
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
-      </div>
+      </m.div>
       <div className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"150vw"} height={"50vh"} src={Path} />

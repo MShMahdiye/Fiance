@@ -16,6 +16,13 @@
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#39D5CF", endColorstr="#51D4DC", GradientType=1);
 }
 
+.dashed-card {
+  width: 22vw;
+  height: 25vh;
+  border-radius: 1.5rem;
+  border: 3px dashed #d5d5d5;
+}
+
 .gradient-container {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
