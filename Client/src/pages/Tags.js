@@ -6,6 +6,7 @@ import '../components/component_css/Tags.css'
 import { SketchPicker, BlockPicker, CirclePicker } from "react-color";
 import { Link, useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
+import TagCards from '../components/TagCards';
 
 const EditTagMutation = gql`
   mutation Mutation($_id: ID!, $data: tagInfo!) {
@@ -37,6 +38,7 @@ function Tags() {
   const { loading, error, data, refetch } = useQuery(myTags)
   const [somenewtags, setsomenewtags] = useState([{ name: 'default', color: 'rgba(128,128,128,1)' }])
   const [isModaldisplayed, setisModaldisplayed] = useState(false)
+  const [openEdit, setOpenEdit] = useState(false)
 
   const [sketchPickerColor, setSketchPickerColor] = useState({
     r: "241",
@@ -48,6 +50,10 @@ function Tags() {
   const { r, g, b, a } = sketchPickerColor;
 
   const navigate = useNavigate()
+  const handleEdit = () => {
+    console.log("heiiiiiiiiiii");
+    setOpenEdit(true)
+  }
 
   // console.log("data : ", data);
 
@@ -99,6 +105,7 @@ function Tags() {
     }
 
     setTagInfo({ name: '', color: '' })
+    setOpenEdit(false)
   }
 
   const tagsObj = {}
@@ -119,6 +126,7 @@ function Tags() {
   }
 
   create()
+  
 
   if (error) return <h1> error </h1>
 
@@ -171,25 +179,40 @@ function Tags() {
                             {tag.name}
                           </div>
                         </div>
-                        <div className='mx-[2vw] w-[25vw] flex justify-center items-center mb-4'>
-                          <TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' />
-                        </div>
-                        <div className='mb-6'>
-                          <CirclePicker
-                            key={tag._id}
-                            onChange={(color) => {
-                              setSketchPickerColor(color.rgb);
-                              if (tagInfo.name === '') {
-                                setTagInfo({ ...tagInfo, name: tag.name })
-                              }
-                            }}
-                            color={show ? sketchPickerColor : ''}
+                        {
+                          openEdit && id === tag._id ?
+                          <>
+                              <div className='mx-[2vw] w-[25vw] flex justify-center items-center mb-4'>
+                                <TextField fullWidth name='name' variant='standard' onChange={handleChange} label='نام تگ' />
+                              </div>
+                              <div className='mb-6'>
+                                <CirclePicker
+                                  key={tag._id}
+                                  onChange={(color) => {
+                                    setSketchPickerColor(color.rgb);
+                                    if (tagInfo.name === '') {
+                                      setTagInfo({ ...tagInfo, name: tag.name })
+                                    }
+                                  }}
+                                  color={show ? sketchPickerColor : ''}
 
-                          />
-                        </div>
-                        <div className='w-[4vw] flex items-center mb-4'>
-                          <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
-                        </div>
+                                />
+                              </div>
+                              <div className='w-[4vw] flex items-center mb-4'>
+                                <Button fullWidth size='large' variant='contained' onClick={handleSubmit}>ثبت</Button>
+                              </div>
+                            </>
+                            :
+                            <div className='relative'>
+                              <TagCards />
+                              <div
+                                onClick={handleEdit}
+                                className='flex justify-center items-center absolute top-[80px] right-[120px]  w-[70px] p-2 rounded-full bg-[#fce4ec] border-[#e91e63] border-[1px] border-solid text-[#e91e63]'>
+                                <div>ویرایش</div>
+                              </div>
+                            </div>
+                            
+                        }
                       </div>
                     )
                   })
@@ -205,8 +228,8 @@ function Tags() {
                   initial={{ y: "120%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
                   transition={{ duration: 1, delay: .3, ease: "easeOut" }} className={'w-40 h-40'} >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><path fill="#CBD5E1" 
-                  d="M258.14 155.61c-1.04-4.14-3-7.76-5.55-10.95.14-.92.15-1.9-.02-2.95-.69-4.36-3.82-7.65-7.41-10.17-.64-3.53-2.96-7.04-5.76-9.95
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><path fill="#CBD5E1"
+                    d="M258.14 155.61c-1.04-4.14-3-7.76-5.55-10.95.14-.92.15-1.9-.02-2.95-.69-4.36-3.82-7.65-7.41-10.17-.64-3.53-2.96-7.04-5.76-9.95
                    1.76-5.16.23-11.45-2.98-16.45 1.33-.88 2.58-1.89 3.73-3.05 1.23-1.24 1.08-3.05 0-4.32-4.96-5.81-10.88-10.95-17.42-15.27-1.24-7.16-12.07-10.42-17.75-12.43-.63-.22-1.27-.43-1.9-.65-14.3-8.79-33.13-13.87-48.43-6.68-2.95-.55-5.93-.91-8.92-1.07-8.75-.48-21.66 1.27-23.14 12.05-.02.13-.02.26-.04.4-3.47.17-6.93.58-10.29 1.29-4.27-.01-8.55.24-12.79.77-5.49.68-11.2 1.59-16.43 3.62-4.65.85-9.13 2.54-11.85 6.32-1.55 2.16-2.17 4.45-2.13 6.75-.64 2.18-.77 4.53-.21 7 1.16 5.1 4.83 8.97 9.07 12.02l-2 .3c-4.95.79-10.43 2.39-11.47 8.05 
                    0 .04-.01.08-.02.13-6.01 1.45-11.81 3.84-16.28 7.75-1.42 1.25-2.53 2.59-3.37 4.01-2.39 2.5-3.8 5.76-3.38 9.9.17 1.72.62 3.32 1.29 
                    4.82-2.09 3.33-1.62 6.68.18 9.8-.76 2.33-.48 4.89 1.27 7.21 3.14 4.17 9.4 6.49 14.04 8.49.8.34 1.6.67 2.41 1 6.52 8.2 16.94 14.17 
@@ -264,7 +287,7 @@ function Tags() {
                 </m.div>
               </div>
               <div className='text-[1vw] my-10'>هنوز برچسبی افزوده نشده است</div>
-              
+
               {/* <Link to={'/dashboard/hazine'}><div className='text-blue-500'>افزودن</div></Link> */}
             </div>
             <div className='EditUser'>

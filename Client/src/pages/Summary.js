@@ -99,6 +99,7 @@ export default function Summary() {
   const createDaily = () => {
     totalAmount = 0;
     somenewtags.forEach(expense => {
+      console.log("ssodfjfdh : ",expense);
       const date = new Date(expense.date)
       const day = date.getDate();
       const amount = expense.amount;
@@ -116,7 +117,7 @@ export default function Summary() {
   createYearly();
   createMonthly();
   createDaily();
-  console.log("KKKKKKKKKKKKK", new Date());
+
 
   return (
     <m.div
@@ -125,18 +126,34 @@ export default function Summary() {
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
       className='grid grid-col-4 grid-row-3 gap-5 h-[89vh] p-5'>
-      <m.div 
-      onHoverStart={{ opacity: 1, scale: 1 }}
-      onHoverEnd={{ opacity: 1, scale: 1.5 }}
-      transition={{ duration: 0.5 }}
-      className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.07, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        transition="transition"
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#FF007C] flex p-2 justify-between items-center shadow-lg'>
         <div className='flex flex-col justify-center items-start'>
           <div className='text-white text-lg font-extrabold my-2'>مجموع کل </div>
           <div className='text-white '>{totalAmount > 0 ? totalAmount : 0}</div>
         </div>
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </m.div>
-      <div className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.07, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        transition="transition"
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#7D00B5] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"150vw"} height={"50vh"} src={Path} />
         </div>
@@ -144,25 +161,45 @@ export default function Summary() {
           <div className='text-lg mb-2'>سال جاری</div>
           <div>{yearlyExpenses[1402] > 0 ? yearlyExpenses[1402] : 0}</div>
         </div>
-      </div>
-      <div className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      </m.div>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.07, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        transition="transition"
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#2D62ED] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path2} />
         </div>
         <div>
           <div className='text-lg mb-2'>ماه جاری</div>
-          <div>{monthlyExpenses[monthlyExpenses[today.getMonth]] > 0 ? monthlyExpenses[today.getMonth] : 0}</div>
+          <div>{monthlyExpenses[months[today.getMonth()-3]] > 0 ? monthlyExpenses[months[today.getMonth()-3]] : 0}</div>
         </div>
-      </div>
-      <div className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
+      </m.div>
+      <m.div
+        variants={{
+          initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
+          hover: { opacity: 1, scale: 1.07, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+        }}
+        initial="initial"
+        animate={{ opacity: 1 }}
+        transition="transition"
+        whileHover="hover"
+        exit={{ opacity: 1 }}
+        className='chart-res rounded bg-[#39D5CF] flex p-2 justify-between items-center shadow-lg text-white text-right'>
         <div className='flex justify-center items-center rounded mx-[.5vw]'>
           <img width={"160vw"} height={"50vh"} src={Path} />
         </div>
         <div>
           <div className='text-lg mb-2'>روز جاری</div>
-          <div>{dailyExpenses[dailyExpenses[today.getDate]] > 0 ? dailyExpenses[dailyExpenses[today.getDate]] : 0}</div>
+          <div>{dailyExpenses[today.getDay()+5] > 0 ? dailyExpenses[today.getDay()+5] : 0}</div>
         </div>
-      </div>
+      </m.div>
       <div className='flex justify-center items-center shadow-lg rounded col-span-4 row-span-2 gradient-container'>
         <div className='h-full flex justify-center items-center'>
           <div className='flex justify-center items-center w-[30vw] h-[20vw] rounded mx-[1vw]'>

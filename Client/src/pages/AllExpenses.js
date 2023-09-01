@@ -7,6 +7,7 @@ import '../components/component_css/ProfileInfo.css'
 import { motion as m } from 'framer-motion'
 import nodata from "../content/Images/nodata.png"
 import { Link } from 'react-router-dom'
+import TagCards from '../components/TagCards'
 
 const getMyExpenses = gql`
   query GetMyExpenses {
@@ -162,6 +163,7 @@ function AllExpenses() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}>
+        <TagCards />
       {
         somenewtags?.length > 0 ?
           <div className='grid grid-cols-4 grid-row-4'>
@@ -254,7 +256,7 @@ function AllExpenses() {
                 </m.div>
               </div>
               <div className='text-[1vw] my-10'>هنوز هزینه‌ای افزوده نشده است</div>
-              <Link to={'/dashboard/hazine'}><div className='text-blue-500'>افزودن</div></Link>
+              <Link to={'/dashboard/hazine'}><m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='text-blue-500'>افزودن</m.div></Link>
             </div>
           </div>
       }

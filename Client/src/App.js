@@ -15,12 +15,20 @@ import ProfileInfo from './pages/ProfileInfo';
 import NotFound from './pages/NotFound';
 import ColorPicker from './components/ColorPicker';
 import Summary from './pages/Summary';
+import Redirect from './Redirect';
+import {RedirectBook} from './Redirect'
 
 
 function App() {
+
   return (
     <div className="App">
       <Routes>
+      <Route path='/external-link' element={<Redirect />} />
+        <Route
+          path="/privacy-policy"
+          element={<RedirectBook />}
+        />
         <Route path={'/'} element={<Home />} />
         <Route path={'/login'} element={<Login />} />
         <Route path={'/signup'} element={<SignUp />} />

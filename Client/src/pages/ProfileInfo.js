@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../components/component_css/ProfileInfo.css'
 import up from "../content/Images/upp.png"
 import progress from "../content/Images/Progress.png"
@@ -43,9 +43,9 @@ function ProfileInfo() {
 
   const [somenewtags, setsomenewtags] = useState([])
   let totalAmount = 0;
-  let thisDay = 0
-  let thisMonth = 0;
-  let thisYear = 0;
+  let today = new Date();
+
+  const navigate = useNavigate()
 
   const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
 
@@ -56,6 +56,7 @@ function ProfileInfo() {
     refetch: exData.refetch,
     loading: exData.loading
   }
+
 
   const { loading, error, data, refetch } = useQuery(my_info)
   const expenseData = useQuery(getMyExpenses)
@@ -128,7 +129,8 @@ function ProfileInfo() {
   const createDaily = () => {
     totalAmount = 0;
     somenewtags.forEach(expense => {
-      const date = new Date(expense.date)
+      console.log(expense);
+      const date = new Date(expense?.date);
       const day = date.getDate();
       const amount = expense.amount;
       if (dailyExpenses[day]) {
@@ -145,7 +147,6 @@ function ProfileInfo() {
   createYearly();
   createMonthly();
   createDaily();
-  console.log("dily : : ", dailyExpenses);
 
   return (
     <m.div
@@ -195,9 +196,13 @@ function ProfileInfo() {
             <div className='text-white flex'>
               کلکسیون بهترین کتاب‌های پولساز
             </div>
-            <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
-              <Link to={{ pathname: urls.book }} target="_blank" ><span>بزن بریم</span></Link>
-            </m.div>
+            <Link to="/privacy-policy"
+              target="_blank"
+              rel="noreferrer">
+              <m.div onClick={() => {navigate("/privacy-policy")}} whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4 mt-3'>
+                <span>بزن بریم</span>
+              </m.div>
+            </Link>
             <div className='flex justify-center items-center mx-[1vw] absolute bottom-[13vw]'>
               <img width={"200vw"} height={"50vh"} src={jet} />
             </div>
@@ -221,6 +226,7 @@ function ProfileInfo() {
         </div>
       </m.div>
       <m.div
+
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -238,6 +244,7 @@ function ProfileInfo() {
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </m.div>
       <m.div
+
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -252,10 +259,11 @@ function ProfileInfo() {
         </div>
         <div>
           <div className='text-lg mb-2'>سال جاری</div>
-          <div>{yearlyExpenses["1402"] > 0 ? yearlyExpenses["1402"] : 0}</div>
+          <div>---</div>
         </div>
       </m.div>
       <m.div
+
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -270,10 +278,11 @@ function ProfileInfo() {
         </div>
         <div>
           <div className='text-lg mb-2'>ماه جاری</div>
-          <div>{monthlyExpenses[monthlyExpenses.length - 1] > 0 ? monthlyExpenses[monthlyExpenses.length - 1] : 0}</div>
+          <div>---</div>
         </div>
       </m.div>
       <m.div
+        onClick={() => { navigate('/dashboard/summary') }}
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -288,7 +297,7 @@ function ProfileInfo() {
         </div>
         <div>
           <div className='text-lg mb-2'>روز جاری</div>
-          <div>{dailyExpenses[dailyExpenses.length - 1] > 0 ? dailyExpenses[dailyExpenses.length - 1] : 0}</div>
+          <div>---</div>
         </div>
       </m.div>
       <m.div
@@ -317,7 +326,7 @@ function ProfileInfo() {
               مرجع آموزش هوش مالی، سرمایه گذاری، بورس، کسب و کار، بیزینس کوچینگ و توسعه فردی
             </div>
             <div className='text-[#c5c5c5] text-[1vw] m-1'>
-              بیش از صدها ساعت آموزش ویدئویی و صوتی در زمینه‌های مابی، اقتصادی و مدیریت
+              بیش از صدها ساعت آموزش ویدئویی و صوتی در زمینه‌های مالی، اقتصادی و مدیریت
             </div>
             <div className='text-[#c5c5c5] text-[1vw] m-1'>
               دسترسی راحت و سریع به بروزترین آموزش‌ها
@@ -325,7 +334,9 @@ function ProfileInfo() {
           </div>
           <div className='flex justify-end'>
             <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
-              بزن بریم
+              <Link to="/external-link"
+                target="_blank"
+                rel="noreferrer"  >بزن بریم</Link>
             </m.div>
           </div>
         </div>
