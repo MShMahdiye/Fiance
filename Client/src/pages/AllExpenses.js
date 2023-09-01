@@ -163,7 +163,6 @@ function AllExpenses() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}>
-        <TagCards />
       {
         somenewtags?.length > 0 ?
           <div className='grid grid-cols-4 grid-row-4'>
@@ -180,12 +179,16 @@ function AllExpenses() {
                   <th>عملیات</th>
                 </thead>
                 {somenewtags?.map((expense, i) => {
-                  console.log("exppp : ", expense);
                   console.log('ex in sm t = ', somenewtags);
                   const date = new Date(expense?.date)
                   if (expense?.tags?.length > 0) {
                     return (
-                      <tr key={i}>
+                      <m.tr 
+                      variants={{
+                        hover: { opacity: 1,scale: 1.03,color:`${expense.tags[0].color}`, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+                      }}
+                      whileHover="hover"
+                      key={i}>
                         <td>{expense?.tags[0]?.name}</td>
                         <td>{date.getDate()} {months[date.getMonth()]},{date.getFullYear()}</td>
                         <td>{expense.amount}</td>
@@ -203,7 +206,7 @@ function AllExpenses() {
                             <img width={"20vw"} height={"20vw"} src={edit} />
                           </div>
                         </td>
-                      </tr>
+                      </m.tr>
                     )
                   }
                 })}

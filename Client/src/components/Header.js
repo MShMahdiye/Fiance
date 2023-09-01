@@ -16,7 +16,7 @@ function Header() {
           </div>
         </div>
         <div className='m-[0.5vw]'>
-          <div className='cursor-pointer' onClick={() => { window.location.href = token ? '/dashboard' : '/login' }} >
+          <div className='cursor-pointer' onClick={() => { window.location.href = token ? '/dashboard/hazine' : '/login' }} >
             داشبورد
           </div>
         </div>

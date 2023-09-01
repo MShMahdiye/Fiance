@@ -42,7 +42,7 @@ function SignUp() {
       )
       cookies.set('token', token);
       if (token) {
-        window.location.href = "/dashboard/allexpenses";
+        window.location.href = "/dashboard/hazine";
       }
 
     } catch (error) {

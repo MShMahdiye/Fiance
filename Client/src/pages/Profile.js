@@ -6,6 +6,7 @@ import Logo from '../content/Images/light-logo.png'
 import '../components/component_css/Profile.css'
 import '../components/component_css/Tags.css'
 import { motion as m } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const my_info = gql`
   query GetMyExpenses {
@@ -62,6 +63,7 @@ function Profile() {
   const { loading, error, data, refetch } = useQuery(my_info)
 
   console.log('data in profile : ', data);
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -100,7 +102,8 @@ function Profile() {
     }
 
     setUserInfo({ name: '' })
-
+    
+    navigate('/dashboard/profileinfo')
   }
 
 

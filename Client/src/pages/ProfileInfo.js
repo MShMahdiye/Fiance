@@ -226,7 +226,7 @@ function ProfileInfo() {
         </div>
       </m.div>
       <m.div
-
+        onClick={() => { navigate('/dashboard/summary') }}
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -244,7 +244,7 @@ function ProfileInfo() {
         <div><img width={'160vw'} height={'160vw'} src={up} /></div>
       </m.div>
       <m.div
-
+        onClick={() => { navigate('/dashboard/summary') }}
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
@@ -263,7 +263,7 @@ function ProfileInfo() {
         </div>
       </m.div>
       <m.div
-
+        onClick={() => { navigate('/dashboard/summary') }}
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
           hover: { opacity: 1, scale: 1.12, transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
