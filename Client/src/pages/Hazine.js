@@ -140,36 +140,44 @@ function Hazine() {
     <m.div
       initial={{ y: "100%" }}
       animate={{ y: "0%" }}
-      transition={{ duration: 0.75, ease: "easeOut" }}
+      tarnsition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
       className='grid grid-cols-1 grid-row-4 lg:grid-cols-4 lg:grid-row-4 md:grid-cols-4 md:grid-row-4 gap-5 h-[80vh]'>
       <div className='col-span-1 lg:col-span-4 md:col-span-4'>
         <div className='flex flex-wrap justify-center mb-[2vw]'>
           {
-            somenewtags?.length > 0 
-            ?
-            somenewtags?.map((tag, i) => (
-              tag?.name !== ""
-                ?
-                <div style={{
-                  padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
-                  cursor: 'pointer', margin: '1vw'
-                }}
-                  onClick={() => {
-                    const arr = [...somenewtags]
-                    arr[i].isSelected = true
-                    setsomenewtags(arr)
-                  }}
-                >
-                  {tag.name}
-                </div>
-                :
-                null
-            ))
-            :
-            <div className='flex justify-center items-center text-[#E54F6D] m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
-              <div>اول برچسب و اضافه کن</div>
-            </div>
+            somenewtags?.length > 0
+              ?
+              somenewtags?.map((tag, i) => (
+                tag?.name !== ""
+                  ?
+                  <m.div
+                    variants={{
+                      hover: { backgroundColor: `${tag.color}` , transitionDelay: .2, transitionDuration: .5, ease: "circOut" }
+                    }}
+                    animate={{ opacity: 1 }}
+                    transition="transition"
+                    whileHover="hover"
+                    exit={{ opacity: 1 }}
+                    style={{
+                      padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
+                      cursor: 'pointer', margin: '1vw'
+                    }}
+                    onClick={() => {
+                      const arr = [...somenewtags]
+                      arr[i].isSelected = true
+                      setsomenewtags(arr)
+                    }}
+                  >
+                    {tag.name}
+                  </m.div>
+                  :
+                  null
+              ))
+              :
+              <div className='flex justify-center items-center text-[#E54F6D] m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
+                <div>اول برچسب و اضافه کن</div>
+              </div>
           }
           <div className='flex justify-center items-center m-[1vw] p-[.5vw] bg-[#e54f6d1c] rounded'>
             <Link to={'/dashboard/createtag'}>
@@ -191,13 +199,13 @@ function Hazine() {
       </div>
       <div className='bg-[#fbfbfb] p-5 rounded-md'>
         <div className='p-10 w-full h-full rounded bg-[#fff]'>
-          <TextField fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' />
+          <TextField className='w-[2vw]' fullWidth name='amount' variant='standard' onChange={handleChange} label='مقدار هزینه' />
         </div>
       </div>
       <div className='lg:row-span-2 md:row-span-2 row-span-1 bg-[#fbfbfb] p-5 rounded-md'>
         <PersianDatePicker setSelectedDate={setSelectedDate} />
         <div className='w-60 h-70'>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><circle cx="99.27" cy="190.88" r="71.71" fill="#fc498e"></circle><path fill="#34507c" d="M0 230.85L61.97 199.47 118.77 230.17 233.8 103.02 300 150 300 300 0 300 0 230.85z"></path><path fill="#ffffff" d="M233.8 103.02L300 300 300 150 233.8 103.02z" opacity="0.06"></path><path fill="#ffffff" d="M61.97 199.47L0 300 0 230.85 61.97 199.47z" opacity="0.1"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><circle cx="99.27" cy="190.88" r="71.71" fill="#fc498e"></circle><path fill="#34507c" d="M0 230.85L61.97 199.47 118.77 230.17 233.8 103.02 300 150 300 300 0 300 0 230.85z"></path><path fill="#ffffff" d="M233.8 103.02L300 300 300 150 233.8 103.02z" opacity="0.06"></path><path fill="#ffffff" d="M61.97 199.47L0 300 0 230.85 61.97 199.47z" opacity="0.1"></path></svg>
         </div>
       </div>
       <div className='fixed top-21 left-5'><div><Button fullWidth size='large' variant='contained' onClick={handleSubmit}>افزودن</Button></div></div>

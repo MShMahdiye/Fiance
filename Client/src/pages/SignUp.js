@@ -61,9 +61,9 @@ function SignUp() {
       className='create-tag-container flex justify-center item-center h-[100vh] bg-[#fff]'>
       <div className='absolute top-1 right-1 text-white'><Link to={'/login'}>ورود</Link></div>
       <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
-        <div className='flex justify-between w-[60vw] items-center'>
+        <div className='form-logo-container flex justify-between w-[60vw] items-center'>
           <div className='flex justify-center items-center'>
-            <div className='flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
+            <div className='fields-with-border flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
               <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="name" variant='standard' onChange={handleChange} label='نام' /></div>
               <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="username" variant='standard' onChange={handleChange} label='نام کاربری' /></div>
               <div className='mb-[2vw] w-[25vw]'><TextField fullWidth name="pass" variant='standard' onChange={handleChange} label='رمز عبور' /></div>
@@ -74,7 +74,7 @@ function SignUp() {
               </div>
             </div>
           </div>
-          <div className='flex justify-center items-center m-4'>
+          <div className='logo-container flex justify-center items-center m-4'>
             <div ><img width={'1000vw'} src={Logo} /></div>
           </div>
         </div>

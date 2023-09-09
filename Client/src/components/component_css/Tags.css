@@ -20,3 +20,17 @@
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
 }
+
+@media screen and (max-width:1000px) {
+  .logo-container{
+    display: none;
+  }
+  .form-logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fields-with-border{
+    border: none;
+  }
+  }

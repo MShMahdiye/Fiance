@@ -1,8 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie, Doughnut, Line } from 'react-chartjs-2';
-import LineChart from './LineChart'
+import { Pie, Doughnut } from 'react-chartjs-2';
 
 const getMyExpenses = gql`
   query GetMyExpenses {
