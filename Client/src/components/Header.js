@@ -9,7 +9,7 @@ function Header() {
   const token = cookies.get('token')
   return (
     <div className='header-container flex justify-between px-[1vw] items-center py-[0.5vw]'>
-      <div className='text-[1vw] text-[#6C63FF] flex'>
+      <div className='text-[12px] text-[#6C63FF] flex'>
         <div className='m-[0.5vw]'>
           <div className='cursor-pointer' onClick={() => { window.location.href = '/login'; }}>
             ورود

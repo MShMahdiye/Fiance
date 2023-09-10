@@ -144,7 +144,7 @@ function Hazine() {
       exit={{ opacity: 1 }}
       className='grid grid-cols-1 grid-row-4 lg:grid-cols-4 lg:grid-row-4 md:grid-cols-4 md:grid-row-4 gap-5 h-[80vh]'>
       <div className='col-span-1 lg:col-span-4 md:col-span-4'>
-        <div className='flex flex-wrap justify-center mb-[2vw]'>
+        <div className='flex flex-wrap justify-start mb-[2vw]'>
           {
             somenewtags?.length > 0
               ?
@@ -160,7 +160,7 @@ function Hazine() {
                     whileHover="hover"
                     exit={{ opacity: 1 }}
                     style={{
-                      padding: '4px 8px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
+                      padding: '4px 8px',fontSize: '11px', borderRadius: 12, background: tag.isSelected ? `${tag.color}` : '#eee',
                       cursor: 'pointer', margin: '1vw'
                     }}
                     onClick={() => {

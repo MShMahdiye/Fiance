@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.button-video{
+  font-size: 10px;
+}
+
 .EditUser span{
   margin-left: 0.3rem;
   width: 3vw;
@@ -125,9 +129,12 @@
 .credit-txt{
   font-size: 1px !important;
 }
+.button-video{
+  font-size: 7px;
+}
 }
 
-@media screen and (max-height:600px) {
+@media screen and (max-height:680px) {
   .grid-responsive{
     display: grid;
     grid-template-columns:repeat(5,1fr);
@@ -149,4 +156,62 @@
   .credit-txt{
     font-size: 1px !important;
   }
+  }
+
+  @media screen and (max-width:800px) {
+    .grid-responsive{
+      display: grid;
+      grid-template-columns:repeat(5,1fr);
+      grid-template-rows:repeat(4,1fr);
+    }
+    .chart-res{
+      grid-column: span 5;
+    }
+    .credit-res-cont{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      grid-column: span 5;
+      grid-row: span 4;
+    }
+    .bar-res{
+      grid-column: span 5;
+      grid-row: span 5;
+    }
+    .bar-content{
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .jet-res{
+      display: none;
+    }
+    .credit-txt{
+      font-size: 1px !important;
+    }
+    .button-video{
+      width: 80px;
+      height: 40px;
+      margin: 15px;
+      margin-bottom: 45px !important;
+      font-size: 8px;
+    }
+    .button-video-container{
+      width: 90vw;
+      display: flex;
+      justify-content: end;
+
+    }
+    .EditUser{
+      position: fixed;
+      bottom: 1vw;
+      left: .5vw;
+      width: 10vw;
+      height: 5vw;
+      color: #F8C630;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }

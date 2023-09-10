@@ -115,9 +115,9 @@ function Profile() {
       exit={{ opacity: 1 }}
       className='create-tag-container flex sm:justify-center xl:justify-between items-center h-[89vh] bg-[#fff]'>
       <div className='flex justify-center items-center bg-[#c5e1e4aa] w-full h-full'>
-        <div className='flex justify-between w-[60vw] items-center'>
+        <div className='form-logo-container flex justify-between w-[60vw] items-center'>
           <div className='flex justify-center items-center'>
-            <div className='flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
+            <div className='fields-with-border flex flex-col justify-center items-center border-l-2 border-[#fff] border-solid'>
               <div className='justify-center items-center mb-[5rem]'>
                 <Uploader dragActive={<div className='w-[7vw] h-[7vw] rounded-full justify-center items-center cursor-pointer bg-[#e7e9eb]'>
                   <span className='icon-sign-pic'>
@@ -164,7 +164,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className='flex justify-center items-center m-4'>
+          <div className='logo-container flex justify-center items-center m-4'>
             <div ><img width={'1000vw'} src={Logo} /></div>
           </div>
         </div>

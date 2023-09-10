@@ -125,7 +125,7 @@ export default function Summary() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className='grid grid-col-4 grid-row-3 gap-5 h-[89vh] p-5'>
+      className='summary-grid-container grid grid-col-4 grid-row-3 gap-5 h-[89vh] p-5'>
       <m.div
         variants={{
           initial: { opacity: 0, transitionDelay: 2.0, transitionDuration: 1.9, ease: "circOut" },
@@ -201,15 +201,15 @@ export default function Summary() {
         </div>
       </m.div>
       <div className='flex justify-center items-center shadow-lg rounded col-span-4 row-span-2 gradient-container'>
-        <div className='h-full flex justify-center items-center'>
-          <div className='flex justify-center items-center w-[30vw] h-[20vw] rounded mx-[1vw]'>
-            <div className='w-[30vw] h-[20vw]'><LineChart mainList={yearlyExpenses} label={'سالیانه'} colorr={{ bg: 'rgba(197, 91, 113,1)', br: 'rgba(197, 91, 113,0.5)' }} /></div>
+        <div className='line-chart-container h-full flex justify-center items-center'>
+          <div className='flex justify-center items-center w-[300px] h-[20vw] rounded mx-[1vw]'>
+            <div className='w-[300px] h-[20vw]'><LineChart mainList={yearlyExpenses} label={'سالیانه'} colorr={{ bg: 'rgba(197, 91, 113,1)', br: 'rgba(197, 91, 113,0.5)' }} /></div>
           </div>
-          <div className='flex justify-center items-center w-[30vw] h-[20vw] rounded mx-[1vw]'>
-            <div className='w-[30vw] h-[20vw]'><LineChart mainList={monthlyExpenses} label={'ماهیانه'} colorr={{ bg: 'rgba(231, 187, 44,1)', br: 'rgba(231, 187, 44,.5)' }} /></div>
+          <div className='flex justify-center items-center w-[300px] m-5 h-[20vw] rounded mx-[1vw]'>
+            <div className='w-[300px] m-5 h-[20vw]'><LineChart mainList={monthlyExpenses} label={'ماهیانه'} colorr={{ bg: 'rgba(231, 187, 44,1)', br: 'rgba(231, 187, 44,.5)' }} /></div>
           </div>
-          <div className='flex justify-center items-center w-[30vw] h-[20vw] rounded mx-[1vw]'>
-            <div className='w-[30vw] h-[20vw]'><LineChart mainList={dailyExpenses} label={'روزانه'} colorr={{ bg: 'rgba(142, 182, 14,1)', br: 'rgb(142, 182, 149,0.5)' }} /></div>
+          <div className='flex justify-center items-center w-[300px] m-5 h-[20vw] rounded mx-[1vw]'>
+            <div className='w-[300px] m-5 h-[20vw]'><LineChart mainList={dailyExpenses} label={'روزانه'} colorr={{ bg: 'rgba(142, 182, 14,1)', br: 'rgb(142, 182, 149,0.5)' }} /></div>
           </div>
         </div>
       </div>

@@ -161,7 +161,7 @@ function ProfileInfo() {
         transition={{ delay: 0.2, duration: 0.75, ease: "easeOut" }}
         exit={{ opacity: 1 }}
         className='bar-res row-span-3 col-span-1 bg-[#fff] m-2 rounded'>
-        <div className='flex flex-col justify-between h-full items-center shadow-lg p-[3vw]'>
+        <div className='bar-content flex flex-col justify-between h-full items-center shadow-lg p-[3vw]'>
           <div className='flex  flex-col justify-center items-start text-right'>
             <m.div
               initial={{ y: "100%" }}
@@ -332,8 +332,8 @@ function ProfileInfo() {
               دسترسی راحت و سریع به بروزترین آموزش‌ها
             </div>
           </div>
-          <div className='flex justify-end'>
-            <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
+          <div className='button-video-container flex justify-end'>
+            <m.div whileHover={{ scale: 1.08, opacity: .9 }} transition={{ delay: .2, duration: .3 }} className='button-video bg-[#2D62ED] text-white rounded-full w-[6vw] h-[3vw] p-4'>
               <Link to="/external-link"
                 target="_blank"
                 rel="noreferrer"  >بزن بریم</Link>

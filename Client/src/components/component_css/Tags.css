@@ -31,6 +31,6 @@
     align-items: center;
   }
   .fields-with-border{
-    border: none;
+    border: none !important;
   }
   }

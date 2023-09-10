@@ -31,7 +31,7 @@ function Navbar() {
   }, [])
   
   return (
-    <div className='flex items-center justify-between h-[5vw]'>
+    <div className='flex items-center justify-between h-[5vw] text-[11px]'>
       <div className='flex'>
         {
           navBarElements.map(
